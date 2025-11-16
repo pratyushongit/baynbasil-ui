@@ -1,0 +1,24 @@
+.toaster {
+  /* Styles for the sonner toaster container */
+}
+
+.toast {
+  background: var(--background) !important;
+  color: var(--foreground) !important;
+  border: 1px solid var(--border) !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1) !important;
+}
+
+.description {
+  color: var(--muted-foreground) !important;
+}
+
+.actionButton {
+  background: var(--primary) !important;
+  color: var(--primary-foreground) !important;
+}
+
+.cancelButton {
+  background: var(--muted) !important;
+  color: var(--muted-foreground) !important;
+}

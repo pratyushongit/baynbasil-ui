@@ -1,0 +1,177 @@
+/* Base styles and CSS Variables */
+
+:root {
+  /* Pastel color palette inspired by Bay 'n Basil branding */
+  --background: hsl(42, 40%, 96%);
+  --foreground: hsl(24, 20%, 15%);
+
+  --card: hsl(0, 0%, 100%);
+  --card-foreground: hsl(24, 20%, 15%);
+
+  --popover: hsl(0, 0%, 100%);
+  --popover-foreground: hsl(24, 20%, 15%);
+
+  /* Primary: Warm Peach/Coral */
+  --primary: hsl(15, 85%, 70%);
+  --primary-foreground: hsl(0, 0%, 100%);
+
+  /* Secondary: Sage Green */
+  --secondary: hsl(140, 30%, 70%);
+  --secondary-foreground: hsl(140, 40%, 15%);
+
+  /* Muted: Soft Beige */
+  --muted: hsl(35, 25%, 88%);
+  --muted-foreground: hsl(24, 15%, 45%);
+
+  /* Accent: Lavender */
+  --accent: hsl(270, 50%, 75%);
+  --accent-foreground: hsl(270, 40%, 20%);
+
+  /* Additional brand colors */
+  --coral: hsl(5, 75%, 75%);
+  --powder-yellow: hsl(48, 85%, 80%);
+
+  --destructive: hsl(0, 84.2%, 60.2%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+
+  --border: hsl(35, 20%, 85%);
+  --input: hsl(35, 20%, 85%);
+  --ring: hsl(15, 85%, 70%);
+
+  --radius: 1rem;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(
+    135deg,
+    hsl(15, 85%, 75%),
+    hsl(25, 90%, 80%)
+  );
+  --gradient-secondary: linear-gradient(
+    135deg,
+    hsl(140, 35%, 75%),
+    hsl(150, 40%, 80%)
+  );
+  --gradient-accent: linear-gradient(
+    135deg,
+    hsl(270, 55%, 80%),
+    hsl(280, 60%, 85%)
+  );
+  --gradient-hero: linear-gradient(
+    180deg,
+    hsl(42, 40%, 96%),
+    hsl(35, 35%, 92%)
+  );
+
+  /* Shadows */
+  --shadow-soft: 0 4px 20px -2px hsl(15 85% 70% / 0.15);
+  --shadow-hover: 0 8px 30px -4px hsl(15 85% 70% / 0.25);
+
+  /* Transitions */
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.dark {
+  --background: hsl(24, 20%, 12%);
+  --foreground: hsl(42, 40%, 95%);
+
+  --card: hsl(24, 20%, 15%);
+  --card-foreground: hsl(42, 40%, 95%);
+
+  --popover: hsl(24, 20%, 15%);
+  --popover-foreground: hsl(42, 40%, 95%);
+
+  --primary: hsl(15, 85%, 65%);
+  --primary-foreground: hsl(0, 0%, 100%);
+
+  --secondary: hsl(140, 25%, 50%);
+  --secondary-foreground: hsl(0, 0%, 100%);
+
+  --muted: hsl(24, 15%, 25%);
+  --muted-foreground: hsl(35, 20%, 65%);
+
+  --accent: hsl(270, 45%, 65%);
+  --accent-foreground: hsl(0, 0%, 100%);
+
+  --destructive: hsl(0, 62.8%, 50.6%);
+  --destructive-foreground: hsl(0, 0%, 100%);
+
+  --border: hsl(24, 15%, 25%);
+  --input: hsl(24, 15%, 25%);
+  --ring: hsl(15, 85%, 65%);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Global base styles */
+* {
+  border-color: var(--border);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: "Inter", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Playfair Display", serif;
+}
+
+/* Utility classes */
+.text-balance {
+  text-wrap: balance;
+}
+
+.gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.gradient-secondary {
+  background: var(--gradient-secondary);
+}
+
+.gradient-accent {
+  background: var(--gradient-accent);
+}
+
+.gradient-hero {
+  background: var(--gradient-hero);
+}
+
+.hover-lift {
+  transition: var(--transition-smooth);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}

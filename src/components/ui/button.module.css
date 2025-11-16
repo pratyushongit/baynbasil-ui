@@ -1,0 +1,106 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  border-radius: calc(var(--radius) - 4px);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: colors 0.2s;
+  outline: none;
+  cursor: pointer;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.button svg {
+  pointer-events: none;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+}
+
+/* Variants */
+.default {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.default:hover {
+  background: hsl(var(--primary) / 0.9);
+}
+
+.destructive {
+  background: var(--destructive);
+  color: var(--destructive-foreground);
+}
+
+.destructive:hover {
+  background: hsl(var(--destructive) / 0.9);
+}
+
+.outline {
+  border: 1px solid var(--input);
+  background: var(--background);
+}
+
+.outline:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.secondary {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+.secondary:hover {
+  background: hsl(var(--secondary) / 0.8);
+}
+
+.ghost:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.link {
+  color: var(--primary);
+  text-decoration-line: underline;
+  text-underline-offset: 4px;
+}
+
+.link:hover {
+  text-decoration-line: underline;
+}
+
+/* Sizes */
+.sizeDefault {
+  height: 2.5rem;
+  padding: 0.5rem 1rem;
+}
+
+.sizeSm {
+  height: 2.25rem;
+  padding: 0 0.75rem;
+  border-radius: calc(var(--radius) - 4px);
+}
+
+.sizeLg {
+  height: 2.75rem;
+  padding: 0 2rem;
+  border-radius: calc(var(--radius) - 4px);
+}
+
+.sizeIcon {
+  height: 2.5rem;
+  width: 2.5rem;
+}
