@@ -1,0 +1,39 @@
+.radioGroup {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.radioGroupItem {
+  aspect-ratio: 1 / 1;
+  height: 1rem;
+  width: 1rem;
+  border-radius: 9999px;
+  border: 1px solid var(--primary);
+  color: var(--primary);
+}
+
+.radioGroupItem:focus {
+  outline: none;
+}
+
+.radioGroupItem:focus-visible {
+  box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--ring);
+}
+
+.radioGroupItem:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.indicator svg {
+  height: 0.625rem;
+  width: 0.625rem;
+  fill: currentColor;
+}
+

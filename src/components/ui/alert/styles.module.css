@@ -1,0 +1,58 @@
+.alert {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 1rem;
+}
+
+.alert > svg ~ * {
+  padding-left: 1.75rem;
+}
+
+.alert > svg + div {
+  transform: translateY(-3px);
+}
+
+.alert > svg {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  color: var(--foreground);
+}
+
+.default {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.destructive {
+  border-color: hsl(var(--destructive) / 0.5);
+  color: var(--destructive);
+}
+
+.destructive > svg {
+  color: var(--destructive);
+}
+
+@media (prefers-color-scheme: dark) {
+  .destructive {
+    border-color: var(--destructive);
+  }
+}
+
+.alertTitle {
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.025em;
+}
+
+.alertDescription {
+  font-size: 0.875rem;
+}
+
+.alertDescription p {
+  line-height: 1.625;
+}
+
