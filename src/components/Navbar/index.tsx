@@ -5,6 +5,7 @@ import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Image from "next/image";
 import logo from "@/assets/logo.png";
 import styles from "./styles.module.css";
+import { content } from "@/constants/content";
 
 const Navbar = () => {
   const [hidden, setHidden] = useState(false);
@@ -44,7 +45,7 @@ const Navbar = () => {
             transition={{ duration: 0.5 }}
             className={styles.logoContainer}
           >
-            <Image src={logo} alt="Bay 'n Basil" className={styles.logo} width={150} height={60} priority />
+            <Image src={logo} alt={content.brand.name} className={styles.logo} width={150} height={60} priority />
           </motion.div>
 
           <motion.ul
@@ -53,28 +54,22 @@ const Navbar = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className={styles.navList}
           >
-            {["home", "story", "products", "why-us", "contact"].map(
-              (item, index) => (
-                <motion.li
-                  key={item}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 + index * 0.05 }}
-                  className={styles.navItem}
+            {content.navbar.items.map((item, index) => (
+              <motion.li
+                key={item.id}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 + index * 0.05 }}
+                className={styles.navItem}
+              >
+                <button
+                  onClick={() => scrollToSection(item.id)}
+                  className={styles.navButton}
                 >
-                  <button
-                    onClick={() => scrollToSection(item)}
-                    className={styles.navButton}
-                  >
-                    {item === "story"
-                      ? "Our Story"
-                      : item === "why-us"
-                      ? "Why Us"
-                      : item}
-                  </button>
-                </motion.li>
-              )
-            )}
+                  {item.label}
+                </button>
+              </motion.li>
+            ))}
           </motion.ul>
         </div>
       </div>

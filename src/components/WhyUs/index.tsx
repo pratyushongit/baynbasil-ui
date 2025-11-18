@@ -4,31 +4,14 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Leaf, Award, Heart, Sparkles } from "lucide-react";
 import styles from "./styles.module.css";
+import { content } from "@/constants/content";
 
-const features = [
-  {
-    icon: Leaf,
-    title: "100% Natural",
-    description:
-      "No artificial colors, flavors, or preservatives. Just pure, natural spices.",
-  },
-  {
-    icon: Award,
-    title: "Premium Quality",
-    description:
-      "Sourced from the finest farms and carefully tested for quality.",
-  },
-  {
-    icon: Heart,
-    title: "Made with Love",
-    description: "Each blend is crafted with passion and attention to detail.",
-  },
-  {
-    icon: Sparkles,
-    title: "Authentic Flavors",
-    description: "Traditional recipes reimagined for the modern kitchen.",
-  },
-];
+const iconMap = {
+  "100% Natural": Leaf,
+  "Premium Quality": Award,
+  "Made with Love": Heart,
+  "Authentic Flavors": Sparkles,
+};
 
 const WhyUs = () => {
   const ref = useRef(null);
@@ -44,16 +27,13 @@ const WhyUs = () => {
           transition={{ duration: 0.6 }}
           className={styles.header}
         >
-          <h2 className={styles.title}>Why Customers Love Us</h2>
-          <p className={styles.description}>
-            We&apos;re committed to bringing you the best spice blends with
-            uncompromising quality
-          </p>
+          <h2 className={styles.title}>{content.whyUs.title}</h2>
+          <p className={styles.description}>{content.whyUs.description}</p>
         </motion.div>
 
         <div className={styles.grid}>
-          {features.map((feature, index) => {
-            const Icon = feature.icon;
+          {content.whyUs.features.map((feature, index) => {
+            const Icon = iconMap[feature.title as keyof typeof iconMap];
             return (
               <motion.div
                 key={feature.title}

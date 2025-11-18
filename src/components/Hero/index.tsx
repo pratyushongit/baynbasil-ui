@@ -6,6 +6,7 @@ import Image from "next/image";
 import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 import styles from "./styles.module.css";
+import { content } from "@/constants/content";
 
 const Hero = () => {
   const ref = useRef(null);
@@ -48,7 +49,7 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className={styles.logoWrapper}
         >
-          <Image src={logo} alt="Bay 'n Basil" className={styles.logo} width={300} height={120} priority />
+          <Image src={logo} alt={content.brand.name} className={styles.logo} width={300} height={120} priority />
         </motion.div>
 
         <motion.h1
@@ -57,7 +58,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className={styles.title}
         >
-          Pure Flavour. Modern Craft.
+          {content.hero.title}
         </motion.h1>
 
         <motion.p
@@ -66,7 +67,7 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.4 }}
           className={styles.subtitle}
         >
-          Artisanal spice blends that bring out the chef in you
+          {content.hero.subtitle}
         </motion.p>
 
         <motion.div
@@ -86,7 +87,7 @@ const Hero = () => {
               Object.assign(e.currentTarget.style, buttonStyle);
             }}
           >
-            Shop Now
+            {content.hero.buttons.primary}
           </Button>
           <Button
             size="lg"
@@ -107,7 +108,7 @@ const Hero = () => {
               });
             }}
           >
-            Explore More
+            {content.hero.buttons.secondary}
           </Button>
         </motion.div>
       </motion.div>

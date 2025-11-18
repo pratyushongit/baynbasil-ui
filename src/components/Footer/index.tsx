@@ -6,6 +6,7 @@ import Image from "next/image";
 import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 import styles from "./styles.module.css";
+import { content } from "@/constants/content";
 
 const Footer = () => {
   const scrollToTop = () => {
@@ -25,23 +26,17 @@ const Footer = () => {
         <div className={styles.grid}>
           {/* Brand */}
           <div className={styles.brandSection}>
-            <Image src={logo} alt="Bay 'n Basil" className={styles.logo} width={200} height={80} />
+            <Image src={logo} alt={content.brand.name} className={styles.logo} width={200} height={80} />
             <p className={styles.brandDescription}>
-              Artisanal spice blends that bring out the chef in you. Pure
-              flavours, modern craft, authentic experience.
+              {content.footer.brandDescription}
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h3 className={styles.sectionTitle}>Quick Links</h3>
+            <h3 className={styles.sectionTitle}>{content.footer.sections.quickLinks.title}</h3>
             <ul className={styles.linkList}>
-              {[
-                { label: "Home", id: "home" },
-                { label: "Our Story", id: "story" },
-                { label: "Products", id: "products" },
-                { label: "Why Us", id: "why-us" },
-              ].map((link) => (
+              {content.footer.sections.quickLinks.links.map((link) => (
                 <li key={link.id}>
                   <button
                     onClick={() => scrollToSection(link.id)}
@@ -56,7 +51,7 @@ const Footer = () => {
 
           {/* Connect */}
           <div>
-            <h3 className={styles.sectionTitle}>Connect</h3>
+            <h3 className={styles.sectionTitle}>{content.footer.sections.connect.title}</h3>
             <div className={styles.socialLinks}>
               {[
                 { icon: Instagram, href: "#" },
@@ -83,12 +78,12 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className={styles.bottomBar}>
           <p className={styles.copyright}>
-            © 2024 Bay &apos;n Basil. All rights reserved.
+            {content.footer.copyright}
           </p>
 
           <div className={styles.legalLinks}>
-            <button className={styles.legalButton}>Privacy Policy</button>
-            <button className={styles.legalButton}>Terms of Service</button>
+            <button className={styles.legalButton}>{content.footer.legal.privacyPolicy}</button>
+            <button className={styles.legalButton}>{content.footer.legal.termsOfService}</button>
           </div>
         </div>
       </div>

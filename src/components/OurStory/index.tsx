@@ -5,6 +5,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import lifestyleImg from "@/assets/product-lifestyle.jpg";
 import styles from "./styles.module.css";
+import { content } from "@/constants/content";
 
 const OurStory = () => {
   const ref = useRef(null);
@@ -25,7 +26,7 @@ const OurStory = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className={styles.title}
             >
-              Our Story
+              {content.story.title}
             </motion.h2>
 
             <motion.div
@@ -34,23 +35,9 @@ const OurStory = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               className={styles.content}
             >
-              <p>
-                Bay &apos;n Basil was born from a simple belief: cooking should be an
-                adventure, not a chore. We noticed that home cooks were
-                overwhelmed by complicated recipes and endless ingredient lists.
-              </p>
-              <p>
-                That&apos;s when we decided to craft something different. Our spice
-                blends are thoughtfully curated to bring restaurant-quality
-                flavors to your home kitchen. Each blend tells a story, inspired
-                by traditional recipes but reimagined for the modern cook.
-              </p>
-              <p>
-                We source only the finest ingredients, working directly with
-                farmers who share our commitment to quality and sustainability.
-                Every jar is a testament to our belief that great cooking starts
-                with great spices.
-              </p>
+              {content.story.paragraphs.map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
             </motion.div>
           </motion.div>
 
@@ -63,7 +50,7 @@ const OurStory = () => {
             <motion.div className={styles.imageContainer} whileHover={{ scale: 1.05 }} transition={{ duration: 0.4 }}>
               <Image
                 src={lifestyleImg}
-                alt="Bay &apos;n Basil Product"
+                alt={content.story.imageAlt}
                 className={styles.image}
                 width={600}
                 height={800}
