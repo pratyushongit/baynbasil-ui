@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Leaf, Award, Heart, Sparkles } from "lucide-react";
@@ -44,7 +46,7 @@ const WhyUs = () => {
         >
           <h2 className={styles.title}>Why Customers Love Us</h2>
           <p className={styles.description}>
-            We're committed to bringing you the best spice blends with
+            We&apos;re committed to bringing you the best spice blends with
             uncompromising quality
           </p>
         </motion.div>

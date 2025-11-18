@@ -1,5 +1,8 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { Instagram, Facebook, Twitter, ArrowUp } from "lucide-react";
+import Image from "next/image";
 import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 import styles from "./styles.module.css";
@@ -22,7 +25,7 @@ const Footer = () => {
         <div className={styles.grid}>
           {/* Brand */}
           <div className={styles.brandSection}>
-            <img src={logo} alt="Bay 'n Basil" className={styles.logo} />
+            <Image src={logo} alt="Bay 'n Basil" className={styles.logo} width={200} height={80} />
             <p className={styles.brandDescription}>
               Artisanal spice blends that bring out the chef in you. Pure
               flavours, modern craft, authentic experience.
@@ -80,7 +83,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className={styles.bottomBar}>
           <p className={styles.copyright}>
-            © 2024 Bay 'n Basil. All rights reserved.
+            © 2024 Bay &apos;n Basil. All rights reserved.
           </p>
 
           <div className={styles.legalLinks}>

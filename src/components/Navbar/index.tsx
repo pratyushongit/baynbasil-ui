@@ -1,5 +1,8 @@
+"use client";
+
 import { useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import Image from "next/image";
 import logo from "@/assets/logo.png";
 import styles from "./styles.module.css";
 
@@ -41,7 +44,7 @@ const Navbar = () => {
             transition={{ duration: 0.5 }}
             className={styles.logoContainer}
           >
-            <img src={logo} alt="Bay 'n Basil" className={styles.logo} />
+            <Image src={logo} alt="Bay 'n Basil" className={styles.logo} width={150} height={60} priority />
           </motion.div>
 
           <motion.ul

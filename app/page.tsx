@@ -4,9 +4,9 @@ import OurStory from "@/components/OurStory";
 import ProductShowcase from "@/components/ProductShowcase";
 import WhyUs from "@/components/WhyUs";
 import Footer from "@/components/Footer";
-import styles from "./Index.module.css";
+import styles from "./page.module.css";
 
-const Index = () => {
+export default function Home() {
   return (
     <div className={styles.page}>
       <Navbar />
@@ -17,6 +17,5 @@ const Index = () => {
       <Footer />
     </div>
   );
-};
+}
 
-export default Index;

@@ -1,5 +1,8 @@
+"use client";
+
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 import lifestyleImg from "@/assets/product-lifestyle.jpg";
 import styles from "./styles.module.css";
 
@@ -32,12 +35,12 @@ const OurStory = () => {
               className={styles.content}
             >
               <p>
-                Bay 'n Basil was born from a simple belief: cooking should be an
+                Bay &apos;n Basil was born from a simple belief: cooking should be an
                 adventure, not a chore. We noticed that home cooks were
                 overwhelmed by complicated recipes and endless ingredient lists.
               </p>
               <p>
-                That's when we decided to craft something different. Our spice
+                That&apos;s when we decided to craft something different. Our spice
                 blends are thoughtfully curated to bring restaurant-quality
                 flavors to your home kitchen. Each blend tells a story, inspired
                 by traditional recipes but reimagined for the modern cook.
@@ -57,15 +60,15 @@ const OurStory = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className={styles.imageWrapper}
           >
-            <div className={styles.imageContainer}>
-              <motion.img
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.4 }}
+            <motion.div className={styles.imageContainer} whileHover={{ scale: 1.05 }} transition={{ duration: 0.4 }}>
+              <Image
                 src={lifestyleImg}
-                alt="Bay 'n Basil Product"
+                alt="Bay &apos;n Basil Product"
                 className={styles.image}
+                width={600}
+                height={800}
               />
-            </div>
+            </motion.div>
 
             {/* Decorative element */}
             <div className={styles.decorativeElement} />

@@ -1,5 +1,8 @@
+"use client";
+
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import Image from "next/image";
 import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 import styles from "./styles.module.css";
@@ -45,7 +48,7 @@ const Hero = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className={styles.logoWrapper}
         >
-          <img src={logo} alt="Bay 'n Basil" className={styles.logo} />
+          <Image src={logo} alt="Bay 'n Basil" className={styles.logo} width={300} height={120} priority />
         </motion.div>
 
         <motion.h1

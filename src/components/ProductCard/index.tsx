@@ -1,11 +1,14 @@
+"use client";
+
 import { motion } from "framer-motion";
+import Image, { StaticImageData } from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import styles from "./styles.module.css";
 
 interface ProductCardProps {
   name: string;
-  image: string;
+  image: StaticImageData;
   price: string;
   index: number;
 }
@@ -25,7 +28,7 @@ const ProductCard = ({ name, image, price, index }: ProductCardProps) => {
             transition={{ duration: 0.3 }}
             className={styles.imageWrapper}
           >
-            <img src={image} alt={name} className={styles.image} />
+            <Image src={image} alt={name} className={styles.image} width={300} height={300} />
           </motion.div>
 
           <h3 className={styles.productName}>{name}</h3>
