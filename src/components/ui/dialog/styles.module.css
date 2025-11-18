@@ -23,8 +23,8 @@
   max-width: 32rem;
   translate: -50% -50%;
   gap: 1rem;
-  border: 1px solid var(--border);
-  background: var(--background);
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--background));
   padding: 1.5rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   transition: all 0.2s;
@@ -59,12 +59,12 @@
 
 .closeButton:focus {
   outline: none;
-  box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--ring);
+  box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring));
 }
 
 .closeButton[data-state="open"] {
-  background: var(--accent);
-  color: var(--muted-foreground);
+  background: hsl(var(--accent));
+  color: hsl(var(--muted-foreground));
 }
 
 .closeButton:disabled {
@@ -123,7 +123,7 @@
 
 .description {
   font-size: 0.875rem;
-  color: var(--muted-foreground);
+  color: hsl(var(--muted-foreground));
 }
 
 @keyframes fadeIn {

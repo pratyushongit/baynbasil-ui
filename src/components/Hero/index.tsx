@@ -111,30 +111,6 @@ const Hero = () => {
           </Button>
         </motion.div>
       </motion.div>
-
-      {/* Decorative floating elements */}
-      <motion.div
-        animate={{
-          y: [0, -20, 0],
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className={styles.floatingElement1}
-      />
-      <motion.div
-        animate={{
-          y: [0, 20, 0],
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-        className={styles.floatingElement2}
-      />
     </section>
   );
 };

@@ -3,18 +3,18 @@
   width: 1rem;
   flex-shrink: 0;
   border-radius: 0.125rem;
-  border: 1px solid var(--primary);
+  border: 1px solid hsl(var(--primary));
   transition: all 0.2s;
 }
 
 .checkbox:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--ring);
+  box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring));
 }
 
 .checkbox[data-state="checked"] {
-  background: var(--primary);
-  color: var(--primary-foreground);
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
 }
 
 .checkbox:disabled {

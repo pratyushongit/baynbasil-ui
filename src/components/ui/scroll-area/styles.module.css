@@ -34,6 +34,6 @@
   position: relative;
   flex: 1;
   border-radius: 9999px;
-  background: var(--border);
+  background: hsl(var(--border));
 }
 

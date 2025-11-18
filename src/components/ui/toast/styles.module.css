@@ -34,19 +34,19 @@
   gap: 1rem;
   overflow: hidden;
   border-radius: calc(var(--radius) - 4px);
-  border: 1px solid var(--border);
+  border: 1px solid hsl(var(--border));
   padding: 1.5rem;
   padding-right: 2rem;
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
   transition: all 0.2s;
-  background: var(--background);
-  color: var(--foreground);
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
 }
 
 .toastDestructive {
-  border-color: var(--destructive);
-  background: var(--destructive);
-  color: var(--destructive-foreground);
+  border-color: hsl(var(--destructive));
+  background: hsl(var(--destructive));
+  color: hsl(var(--destructive-foreground));
 }
 
 .toastAction {
@@ -65,12 +65,12 @@
 }
 
 .toastAction:hover {
-  background: var(--secondary);
+  background: hsl(var(--secondary));
 }
 
 .toastAction:focus {
   outline: none;
-  box-shadow: 0 0 0 2px var(--ring);
+  box-shadow: 0 0 0 2px hsl(var(--ring));
 }
 
 .toastActionDestructive {
@@ -79,8 +79,8 @@
 
 .toastActionDestructive:hover {
   border-color: hsl(var(--destructive) / 0.3);
-  background: var(--destructive);
-  color: var(--destructive-foreground);
+  background: hsl(var(--destructive));
+  color: hsl(var(--destructive-foreground));
 }
 
 .toastClose {
@@ -102,13 +102,13 @@
 }
 
 .toastClose:hover {
-  color: var(--foreground);
+  color: hsl(var(--foreground));
 }
 
 .toastClose:focus {
   opacity: 1;
   outline: none;
-  box-shadow: 0 0 0 2px var(--ring);
+  box-shadow: 0 0 0 2px hsl(var(--ring));
 }
 
 .toastCloseDestructive {

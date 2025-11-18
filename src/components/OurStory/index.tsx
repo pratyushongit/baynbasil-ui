@@ -69,9 +69,6 @@ const OurStory = () => {
                 height={800}
               />
             </motion.div>
-
-            {/* Decorative element */}
-            <div className={styles.decorativeElement} />
           </motion.div>
         </div>
       </div>

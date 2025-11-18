@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--gradient-hero);
+  background: hsl(var(--gradient-hero));
   overflow: hidden;
 }
 
@@ -28,7 +28,7 @@
   font-size: 3rem;
   font-family: "Playfair Display", serif;
   font-weight: bold;
-  color: var(--foreground);
+  color: hsl(var(--foreground));
   margin-bottom: 1.5rem;
 }
 
@@ -40,7 +40,7 @@
 
 .subtitle {
   font-size: 1.25rem;
-  color: var(--muted-foreground);
+  color: hsl(var(--muted-foreground));
   margin-bottom: 3rem;
   max-width: 42rem;
   margin-left: auto;
@@ -64,26 +64,4 @@
   .buttonGroup {
     flex-direction: row;
   }
-}
-
-.floatingElement1 {
-  position: absolute;
-  top: 5rem;
-  left: 2.5rem;
-  width: 8rem;
-  height: 8rem;
-  background: hsl(var(--accent) / 0.2);
-  border-radius: 9999px;
-  filter: blur(48px);
-}
-
-.floatingElement2 {
-  position: absolute;
-  bottom: 5rem;
-  right: 2.5rem;
-  width: 10rem;
-  height: 10rem;
-  background: hsl(var(--secondary) / 0.2);
-  border-radius: 9999px;
-  filter: blur(48px);
 }

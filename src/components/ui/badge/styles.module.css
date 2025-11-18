@@ -2,7 +2,7 @@
   display: inline-flex;
   align-items: center;
   border-radius: 9999px;
-  border: 1px solid var(--border);
+  border: 1px solid hsl(var(--border));
   padding: 0.125rem 0.625rem;
   font-size: 0.75rem;
   font-weight: 600;
@@ -14,14 +14,14 @@
 }
 
 .badge:focus-visible {
-  outline: 2px solid var(--ring);
+  outline: 2px solid hsl(var(--ring));
   outline-offset: 2px;
 }
 
 .default {
   border-color: transparent;
-  background: var(--primary);
-  color: var(--primary-foreground);
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
 }
 
 .default:hover {
@@ -30,8 +30,8 @@
 
 .secondary {
   border-color: transparent;
-  background: var(--secondary);
-  color: var(--secondary-foreground);
+  background: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
 }
 
 .secondary:hover {
@@ -40,8 +40,8 @@
 
 .destructive {
   border-color: transparent;
-  background: var(--destructive);
-  color: var(--destructive-foreground);
+  background: hsl(var(--destructive));
+  color: hsl(var(--destructive-foreground));
 }
 
 .destructive:hover {
@@ -49,6 +49,6 @@
 }
 
 .outline {
-  color: var(--foreground);
+  color: hsl(var(--foreground));
 }
 

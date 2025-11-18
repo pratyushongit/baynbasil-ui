@@ -1,6 +1,6 @@
 .separator {
   flex-shrink: 0;
-  background: var(--border);
+  background: hsl(var(--border));
 }
 
 .horizontal {

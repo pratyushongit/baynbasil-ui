@@ -2,41 +2,41 @@
 
 :root {
   /* Pastel color palette inspired by Bay 'n Basil branding */
-  --background: hsl(42, 40%, 96%);
-  --foreground: hsl(24, 20%, 15%);
+  --background: 42 40% 96%;
+  --foreground: 24 20% 15%;
 
-  --card: hsl(0, 0%, 100%);
-  --card-foreground: hsl(24, 20%, 15%);
+  --card: 0 0% 100%;
+  --card-foreground: 24 20% 15%;
 
-  --popover: hsl(0, 0%, 100%);
-  --popover-foreground: hsl(24, 20%, 15%);
+  --popover: 0 0% 100%;
+  --popover-foreground: 24 20% 15%;
 
   /* Primary: Warm Peach/Coral */
-  --primary: hsl(15, 85%, 70%);
-  --primary-foreground: hsl(0, 0%, 100%);
+  --primary: 15 85% 70%;
+  --primary-foreground: 0 0% 100%;
 
   /* Secondary: Sage Green */
-  --secondary: hsl(140, 30%, 70%);
-  --secondary-foreground: hsl(140, 40%, 15%);
+  --secondary: 140 30% 70%;
+  --secondary-foreground: 140 40% 15%;
 
   /* Muted: Soft Beige */
-  --muted: hsl(35, 25%, 88%);
-  --muted-foreground: hsl(24, 15%, 45%);
+  --muted: 35 25% 88%;
+  --muted-foreground: 24 15% 45%;
 
   /* Accent: Lavender */
-  --accent: hsl(270, 50%, 75%);
-  --accent-foreground: hsl(270, 40%, 20%);
+  --accent: 270 50% 75%;
+  --accent-foreground: 270 40% 20%;
 
   /* Additional brand colors */
-  --coral: hsl(5, 75%, 75%);
-  --powder-yellow: hsl(48, 85%, 80%);
+  --coral: 5 75% 75%;
+  --powder-yellow: 48 85% 80%;
 
-  --destructive: hsl(0, 84.2%, 60.2%);
-  --destructive-foreground: hsl(0, 0%, 100%);
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 0 0% 100%;
 
-  --border: hsl(35, 20%, 85%);
-  --input: hsl(35, 20%, 85%);
-  --ring: hsl(15, 85%, 70%);
+  --border: 35 20% 85%;
+  --input: 35 20% 85%;
+  --ring: 15 85% 70%;
 
   --radius: 1rem;
 
@@ -72,33 +72,33 @@
 }
 
 .dark {
-  --background: hsl(24, 20%, 12%);
-  --foreground: hsl(42, 40%, 95%);
+  --background: 24 20% 12%;
+  --foreground: 42 40% 95%;
 
-  --card: hsl(24, 20%, 15%);
-  --card-foreground: hsl(42, 40%, 95%);
+  --card: 24 20% 15%;
+  --card-foreground: 42 40% 95%;
 
-  --popover: hsl(24, 20%, 15%);
-  --popover-foreground: hsl(42, 40%, 95%);
+  --popover: 24 20% 15%;
+  --popover-foreground: 42 40% 95%;
 
-  --primary: hsl(15, 85%, 65%);
-  --primary-foreground: hsl(0, 0%, 100%);
+  --primary: 15 85% 65%;
+  --primary-foreground: 0 0% 100%;
 
-  --secondary: hsl(140, 25%, 50%);
-  --secondary-foreground: hsl(0, 0%, 100%);
+  --secondary: 140 25% 50%;
+  --secondary-foreground: 0 0% 100%;
 
-  --muted: hsl(24, 15%, 25%);
-  --muted-foreground: hsl(35, 20%, 65%);
+  --muted: 24 15% 25%;
+  --muted-foreground: 35 20% 65%;
 
-  --accent: hsl(270, 45%, 65%);
-  --accent-foreground: hsl(0, 0%, 100%);
+  --accent: 270 45% 65%;
+  --accent-foreground: 0 0% 100%;
 
-  --destructive: hsl(0, 62.8%, 50.6%);
-  --destructive-foreground: hsl(0, 0%, 100%);
+  --destructive: 0 62.8% 50.6%;
+  --destructive-foreground: 0 0% 100%;
 
-  --border: hsl(24, 15%, 25%);
-  --input: hsl(24, 15%, 25%);
-  --ring: hsl(15, 85%, 65%);
+  --border: 24 15% 25%;
+  --input: 24 15% 25%;
+  --ring: 15 85% 65%;
 }
 
 /* Smooth scrolling */
@@ -112,26 +112,26 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--muted);
+  background: hsl(var(--muted));
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
+  background: hsl(var(--primary));
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--accent);
+  background: hsl(var(--accent));
 }
 
 /* Global base styles */
 * {
-  border-color: var(--border);
+  border-color: hsl(var(--border));
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
   font-family: "Inter", sans-serif;
   margin: 0;
   padding: 0;

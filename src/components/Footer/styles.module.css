@@ -1,7 +1,7 @@
 .footer {
   position: relative;
   background: hsl(var(--muted) / 0.5);
-  border-top: 1px solid var(--border);
+  border-top: 1px solid hsl(var(--border));
 }
 
 .container {
@@ -40,7 +40,7 @@
 }
 
 .brandDescription {
-  color: var(--muted-foreground);
+  color: hsl(var(--muted-foreground));
   max-width: 28rem;
 }
 
@@ -49,7 +49,7 @@
   font-weight: bold;
   font-size: 1.125rem;
   margin-bottom: 1rem;
-  color: var(--foreground);
+  color: hsl(var(--foreground));
 }
 
 .linkList {
@@ -62,7 +62,7 @@
 }
 
 .linkButton {
-  color: var(--muted-foreground);
+  color: hsl(var(--muted-foreground));
   background: none;
   border: none;
   text-align: left;
@@ -72,7 +72,7 @@
 }
 
 .linkButton:hover {
-  color: var(--primary);
+  color: hsl(var(--primary));
 }
 
 .socialLinks {
@@ -88,14 +88,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--primary);
+  color: hsl(var(--primary));
   transition: all 0.3s;
   text-decoration: none;
 }
 
 .socialLink:hover {
-  background: var(--primary);
-  color: var(--primary-foreground);
+  background: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
 }
 
 .socialIcon {
@@ -105,7 +105,7 @@
 
 .bottomBar {
   padding-top: 2rem;
-  border-top: 1px solid var(--border);
+  border-top: 1px solid hsl(var(--border));
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -120,7 +120,7 @@
 }
 
 .copyright {
-  color: var(--muted-foreground);
+  color: hsl(var(--muted-foreground));
   font-size: 0.875rem;
 }
 
@@ -131,7 +131,7 @@
 }
 
 .legalButton {
-  color: var(--muted-foreground);
+  color: hsl(var(--muted-foreground));
   background: none;
   border: none;
   cursor: pointer;
@@ -140,7 +140,7 @@
 }
 
 .legalButton:hover {
-  color: var(--primary);
+  color: hsl(var(--primary));
 }
 
 .backToTop {

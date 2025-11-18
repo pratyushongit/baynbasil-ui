@@ -11,7 +11,7 @@
 }
 
 .tableHeader tr {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid hsl(var(--border));
 }
 
 .tableBody tr:last-child {
@@ -19,7 +19,7 @@
 }
 
 .tableFooter {
-  border-top: 1px solid var(--border);
+  border-top: 1px solid hsl(var(--border));
   background: hsl(var(--muted) / 0.5);
   font-weight: 500;
 }
@@ -29,7 +29,7 @@
 }
 
 .tableRow {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid hsl(var(--border));
   transition: colors 0.2s;
 }
 
@@ -38,7 +38,7 @@
 }
 
 .tableRow[data-state="selected"] {
-  background: var(--muted);
+  background: hsl(var(--muted));
 }
 
 .tableHead {
@@ -47,7 +47,7 @@
   text-align: left;
   vertical-align: middle;
   font-weight: 500;
-  color: var(--muted-foreground);
+  color: hsl(var(--muted-foreground));
 }
 
 .tableHead:has([role="checkbox"]) {
@@ -66,6 +66,6 @@
 .tableCaption {
   margin-top: 1rem;
   font-size: 0.875rem;
-  color: var(--muted-foreground);
+  color: hsl(var(--muted-foreground));
 }
 

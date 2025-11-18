@@ -9,13 +9,13 @@
 }
 
 .toggle:hover {
-  background: var(--muted);
-  color: var(--muted-foreground);
+  background: hsl(var(--muted));
+  color: hsl(var(--muted-foreground));
 }
 
 .toggle:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--ring);
+  box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring));
 }
 
 .toggle:disabled {
@@ -24,8 +24,8 @@
 }
 
 .toggle[data-state="on"] {
-  background: var(--accent);
-  color: var(--accent-foreground);
+  background: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
 }
 
 .variantDefault {
@@ -33,13 +33,13 @@
 }
 
 .variantOutline {
-  border: 1px solid var(--input);
+  border: 1px solid hsl(var(--input));
   background: transparent;
 }
 
 .variantOutline:hover {
-  background: var(--accent);
-  color: var(--accent-foreground);
+  background: hsl(var(--accent));
+  color: hsl(var(--accent-foreground));
 }
 
 .sizeDefault {

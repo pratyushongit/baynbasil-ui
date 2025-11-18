@@ -6,7 +6,7 @@
   z-index: 50;
   background: hsl(var(--background) / 0.8);
   backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid hsl(var(--border));
 }
 
 .container {
@@ -54,7 +54,7 @@
 .navButton {
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--foreground);
+  color: hsl(var(--foreground));
   background: none;
   border: none;
   cursor: pointer;
@@ -65,7 +65,7 @@
 }
 
 .navButton:hover {
-  color: var(--primary);
+  color: hsl(var(--primary));
 }
 
 .navButton::after {
@@ -75,7 +75,7 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--primary);
+  background: hsl(var(--primary));
   transition: width 0.3s;
 }
 

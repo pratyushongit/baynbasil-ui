@@ -3,8 +3,8 @@
   height: 2.5rem;
   width: 100%;
   border-radius: calc(var(--radius) - 2px);
-  border: 1px solid var(--input);
-  background: var(--background);
+  border: 1px solid hsl(var(--input));
+  background: hsl(var(--background));
   padding: 0.5rem 0.75rem;
   font-size: 1rem;
   transition: colors 0.2s;
@@ -21,16 +21,16 @@
   background: transparent;
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--foreground);
+  color: hsl(var(--foreground));
 }
 
 .input::placeholder {
-  color: var(--muted-foreground);
+  color: hsl(var(--muted-foreground));
 }
 
 .input:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--ring);
+  box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--ring));
 }
 
 .input:disabled {

@@ -4,11 +4,10 @@ import OurStory from "@/components/OurStory";
 import ProductShowcase from "@/components/ProductShowcase";
 import WhyUs from "@/components/WhyUs";
 import Footer from "@/components/Footer";
-import styles from "./Index.module.css";
 
 const Index = () => {
   return (
-    <div className={styles.page}>
+    <div>
       <Navbar />
       <Hero />
       <OurStory />

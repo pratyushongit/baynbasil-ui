@@ -4,14 +4,14 @@
   width: 100%;
   overflow: hidden;
   border-radius: 9999px;
-  background: var(--secondary);
+  background: hsl(var(--secondary));
 }
 
 .indicator {
   height: 100%;
   width: 100%;
   flex: 1;
-  background: var(--primary);
+  background: hsl(var(--primary));
   transition: all 0.2s;
 }
 
