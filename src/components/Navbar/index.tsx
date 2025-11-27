@@ -45,7 +45,14 @@ const Navbar = () => {
             transition={{ duration: 0.5 }}
             className={styles.logoContainer}
           >
-            <Image src={logo} alt={content.brand.name} className={styles.logo} width={150} height={60} priority />
+            <Image
+              src={logo}
+              alt={content.brand.name}
+              className={styles.logo}
+              width={150}
+              height={60}
+              priority
+            />
           </motion.div>
 
           <motion.ul

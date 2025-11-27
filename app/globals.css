@@ -137,7 +137,9 @@ html {
 body {
   background: hsl(var(--background));
   color: hsl(var(--foreground));
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-frunchy-sage), sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
   margin: 0;
   padding: 0;
 }
@@ -148,8 +150,30 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Playfair Display", serif;
+  font-family: var(--font-frunchy-sage), sans-serif;
   color: hsl(var(--headline));
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 4rem;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+p {
+  font-size: 1.25rem;
+  line-height: 1.7;
 }
 
 /* Utility classes */

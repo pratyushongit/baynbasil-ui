@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toast/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ReactQueryProvider } from "./providers";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-const playfair = Playfair_Display({ 
-  subsets: ["latin"], 
-  variable: "--font-playfair" 
+const frunchySage = localFont({
+  src: "../src/fonts/frunchy-sage.ttf",
+  variable: "--font-frunchy-sage",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
   title: "Bay 'n Basil - Authentic Regional Cuisine",
-  description: "Experience the authentic flavors of regional Indian cuisine with Bay 'n Basil",
+  description:
+    "Experience the authentic flavors of regional Indian cuisine with Bay 'n Basil",
 };
 
 export default function RootLayout({
@@ -24,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${playfair.variable}`}>
+      <body className={frunchySage.variable}>
         <ReactQueryProvider>
           <TooltipProvider>
             <Toaster />
@@ -36,4 +37,3 @@ export default function RootLayout({
     </html>
   );
 }
-
