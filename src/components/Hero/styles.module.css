@@ -28,7 +28,7 @@
   font-size: 3rem;
   font-family: "Playfair Display", serif;
   font-weight: bold;
-  color: hsl(var(--foreground));
+  color: hsl(var(--headline));
   margin-bottom: 1.5rem;
 }
 

@@ -18,7 +18,7 @@
   font-family: "Playfair Display", serif;
   font-weight: bold;
   margin-bottom: 1rem;
-  color: hsl(var(--foreground));
+  color: hsl(var(--headline));
 }
 
 @media (min-width: 768px) {

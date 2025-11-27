@@ -49,7 +49,7 @@
   font-weight: bold;
   font-size: 1.125rem;
   margin-bottom: 1rem;
-  color: hsl(var(--foreground));
+  color: hsl(var(--headline));
 }
 
 .linkList {

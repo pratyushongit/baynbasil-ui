@@ -1,70 +1,73 @@
 /* Base styles and CSS Variables */
 
 :root {
-  /* Pastel color palette inspired by Bay 'n Basil branding */
-  --background: 42 40% 96%;
-  --foreground: 24 20% 15%;
+  /* Warm, earthy, spice-forward color palette */
+  
+  /* #FDF8F4 – Cream (background) */
+  --background: 27 64% 97%;
+  /* #2B2B2B – Black (text) */
+  --foreground: 0 0% 17%;
+  /* #8B5536 – Deep Cinnamon (headlines) */
+  --headline: 22 44% 38%;
 
-  --card: 0 0% 100%;
-  --card-foreground: 24 20% 15%;
+  /* #FDF8F4 – Cream */
+  --card: 27 64% 97%;
+  --card-foreground: 0 0% 17%;
 
-  --popover: 0 0% 100%;
-  --popover-foreground: 24 20% 15%;
+  --popover: 27 64% 97%;
+  --popover-foreground: 0 0% 17%;
 
-  /* Primary: Warm Peach/Coral */
-  --primary: 15 85% 70%;
-  --primary-foreground: 0 0% 100%;
+  /* #C47A53 – Terracotta Spice (primary/accents) */
+  --primary: 21 52% 55%;
+  --primary-foreground: 27 64% 97%;
 
-  /* Secondary: Sage Green */
-  --secondary: 140 30% 70%;
-  --secondary-foreground: 140 40% 15%;
+  /* #8B5536 – Deep Cinnamon (secondary) */
+  --secondary: 22 44% 38%;
+  --secondary-foreground: 27 64% 97%;
 
-  /* Muted: Soft Beige */
-  --muted: 35 25% 88%;
-  --muted-foreground: 24 15% 45%;
+  /* #E7C9B1 – Clay Neutral (muted/sections) */
+  --muted: 27 50% 80%;
+  --muted-foreground: 22 30% 35%;
 
-  /* Accent: Lavender */
-  --accent: 270 50% 75%;
-  --accent-foreground: 270 40% 20%;
+  /* Accent uses Terracotta with variation */
+  --accent: 21 52% 55%;
+  --accent-foreground: 27 64% 97%;
 
-  /* Additional brand colors */
-  --coral: 5 75% 75%;
-  --powder-yellow: 48 85% 80%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 27 64% 97%;
 
-  --destructive: 0 84.2% 60.2%;
-  --destructive-foreground: 0 0% 100%;
-
-  --border: 35 20% 85%;
-  --input: 35 20% 85%;
-  --ring: 15 85% 70%;
+  /* Border uses Clay Neutral */
+  --border: 27 40% 85%;
+  --input: 27 40% 85%;
+  --ring: 21 52% 55%;
 
   --radius: 1rem;
 
-  /* Gradients */
+  /* Gradients with new palette */
   --gradient-primary: linear-gradient(
     135deg,
-    hsl(15, 85%, 75%),
-    hsl(25, 90%, 80%)
+    hsl(21, 52%, 55%),
+    hsl(22, 44%, 45%)
   );
   --gradient-secondary: linear-gradient(
     135deg,
-    hsl(140, 35%, 75%),
-    hsl(150, 40%, 80%)
+    hsl(27, 50%, 80%),
+    hsl(27, 45%, 75%)
   );
   --gradient-accent: linear-gradient(
     135deg,
-    hsl(270, 55%, 80%),
-    hsl(280, 60%, 85%)
+    hsl(21, 52%, 60%),
+    hsl(21, 48%, 50%)
   );
   --gradient-hero: linear-gradient(
     180deg,
-    hsl(42, 40%, 96%),
-    hsl(35, 35%, 92%)
+    hsl(27, 64%, 97%),
+    hsl(27, 50%, 92%)
   );
 
-  /* Shadows */
-  --shadow-soft: 0 4px 20px -2px hsl(15 85% 70% / 0.15);
-  --shadow-hover: 0 8px 30px -4px hsl(15 85% 70% / 0.25);
+  /* Shadows with Terracotta tint */
+  --shadow-soft: 0 4px 20px -2px hsl(21 52% 55% / 0.15);
+  --shadow-hover: 0 8px 30px -4px hsl(21 52% 55% / 0.25);
 
   /* Transitions */
   --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -72,33 +75,35 @@
 }
 
 .dark {
-  --background: 24 20% 12%;
-  --foreground: 42 40% 95%;
+  /* Dark mode with inverted warm palette */
+  --background: 22 25% 12%;
+  --foreground: 27 50% 92%;
+  --headline: 27 50% 85%;
 
-  --card: 24 20% 15%;
-  --card-foreground: 42 40% 95%;
+  --card: 22 20% 16%;
+  --card-foreground: 27 50% 92%;
 
-  --popover: 24 20% 15%;
-  --popover-foreground: 42 40% 95%;
+  --popover: 22 20% 16%;
+  --popover-foreground: 27 50% 92%;
 
-  --primary: 15 85% 65%;
-  --primary-foreground: 0 0% 100%;
+  --primary: 21 52% 58%;
+  --primary-foreground: 22 25% 12%;
 
-  --secondary: 140 25% 50%;
-  --secondary-foreground: 0 0% 100%;
+  --secondary: 27 40% 65%;
+  --secondary-foreground: 22 25% 12%;
 
-  --muted: 24 15% 25%;
-  --muted-foreground: 35 20% 65%;
+  --muted: 22 20% 22%;
+  --muted-foreground: 27 35% 65%;
 
-  --accent: 270 45% 65%;
-  --accent-foreground: 0 0% 100%;
+  --accent: 21 48% 55%;
+  --accent-foreground: 27 64% 97%;
 
-  --destructive: 0 62.8% 50.6%;
-  --destructive-foreground: 0 0% 100%;
+  --destructive: 0 62% 50%;
+  --destructive-foreground: 27 64% 97%;
 
-  --border: 24 15% 25%;
-  --input: 24 15% 25%;
-  --ring: 15 85% 65%;
+  --border: 22 18% 25%;
+  --input: 22 18% 25%;
+  --ring: 21 52% 58%;
 }
 
 /* Smooth scrolling */
@@ -144,6 +149,7 @@ h4,
 h5,
 h6 {
   font-family: "Playfair Display", serif;
+  color: hsl(var(--headline));
 }
 
 /* Utility classes */

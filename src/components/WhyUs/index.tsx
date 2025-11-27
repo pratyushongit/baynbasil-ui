@@ -7,10 +7,10 @@ import styles from "./styles.module.css";
 import { content } from "@/constants/content";
 
 const iconMap = {
-  "100% Natural": Leaf,
-  "Premium Quality": Award,
-  "Made with Love": Heart,
-  "Authentic Flavors": Sparkles,
+  "Curated for convenience": Leaf,
+  "Recipe Focused": Award,
+  "Makes you a star chef": Heart,
+  "Tested through real cooking": Sparkles,
 };
 
 const WhyUs = () => {

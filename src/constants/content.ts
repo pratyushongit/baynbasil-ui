@@ -4,11 +4,11 @@ export const content = {
   },
 
   hero: {
-    title: "Pure Flavour. Modern Craft.",
-    subtitle: "Artisanal spice blends that bring out the chef in you",
+    title: "Effortless Flavour. Every Time.",
+    subtitle: "Artisanal spice blends because one masala can't fit every mood",
     buttons: {
-      primary: "Shop Now",
-      secondary: "Explore More",
+      primary: "Shop Our Blends",
+      secondary: "Discover Recipes",
     },
   },
 
@@ -23,7 +23,7 @@ export const content = {
   },
 
   story: {
-    title: "Our Story",
+    title: "Too Lazy to grind 12 spices for a dish? We got you!",
     paragraphs: [
       "Bay 'n Basil was born from a simple belief: cooking should be an adventure, not a chore. We noticed that home cooks were overwhelmed by complicated recipes and endless ingredient lists.",
       "That's when we decided to craft something different. Our spice blends are thoughtfully curated to bring restaurant-quality flavors to your home kitchen. Each blend tells a story, inspired by traditional recipes but reimagined for the modern cook.",
@@ -34,40 +34,39 @@ export const content = {
 
   productShowcase: {
     title: "Our Signature Blends",
-    description:
-      "Each blend is crafted to perfection, bringing authentic flavors to your kitchen",
+    description: "For kitchens that crave convenience -- and flavor",
   },
 
   whyUs: {
-    title: "Why Customers Love Us",
+    title: "Why You Will Love Us",
     description:
       "We're committed to bringing you the best spice blends with uncompromising quality",
     features: [
       {
-        title: "100% Natural",
+        title: "Curated for convenience",
         description:
-          "No artificial colors, flavors, or preservatives. Just pure, natural spices.",
+          "We handle the measuring, roasting, grinding and balancing- so you can cook faster",
       },
       {
-        title: "Premium Quality",
+        title: "Recipe Focused",
         description:
-          "Sourced from the finest farms and carefully tested for quality.",
+          "Each mix is chef-curated for a specific dish, so no more guesswork or one masala fits all cooking",
       },
       {
-        title: "Made with Love",
+        title: "Makes you a star chef",
         description:
-          "Each blend is crafted with passion and attention to detail.",
+          " Effortless flavour for everday real Indian cooks starts here for weekday dinners to weekend feasts",
       },
       {
-        title: "Authentic Flavors",
-        description: "Traditional recipes reimagined for the modern kitchen.",
+        title: "Tested through real cooking",
+        description:
+          "Backed by real trials, honest feedback, tested and perfected across kitchens and homes- not just formula sheets",
       },
     ],
   },
 
   footer: {
-    brandDescription:
-      "Artisanal spice blends that bring out the chef in you. Pure flavours, modern craft, authentic experience.",
+    brandDescription: "For Kitchens that Crave Convenience -- and Flavor",
     sections: {
       quickLinks: {
         title: "Quick Links",
