@@ -4,7 +4,11 @@
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
-  background: hsl(var(--gradient-hero));
+  background: hsl(var(--muted) / 0.3);
+  background-image: url("../../assets/hero-bg.png");
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
   overflow: hidden;
   padding: 0 2rem;
 }
