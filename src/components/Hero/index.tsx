@@ -3,9 +3,11 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight, BookOpen } from "lucide-react";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import styles from "./styles.module.css";
 import { content } from "@/constants/content";
+import heroBg from "@/assets/hero-bg.png";
 
 const Hero = () => {
   const ref = useRef(null);
@@ -26,6 +28,15 @@ const Hero = () => {
 
   return (
     <section id="home" ref={ref} className={styles.hero}>
+      <Image
+        src={heroBg}
+        alt=""
+        fill
+        priority
+        quality={85}
+        sizes="100vw"
+        className={styles.heroBackground}
+      />
       <motion.div style={{ y, opacity }} className={styles.content}>
         <motion.h1
           initial={{ y: 20, opacity: 0 }}

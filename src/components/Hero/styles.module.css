@@ -9,15 +9,15 @@
   padding: 0 2rem;
 }
 
-.hero::before {
-  content: "";
+.heroBackground {
   position: absolute;
   inset: 0;
-  background-image: url("../../assets/hero-bg.png");
-  background-size: cover;
-  background-position: right center;
-  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right center;
   animation: heroImageReveal 0.8s ease-out 0.3s both;
+  z-index: 0;
 }
 
 @keyframes heroImageReveal {
