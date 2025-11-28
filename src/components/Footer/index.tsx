@@ -1,18 +1,13 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Instagram, Facebook, Twitter, ArrowUp } from "lucide-react";
+import { Instagram, Facebook, Twitter } from "lucide-react";
 import Image from "next/image";
 import logo from "@/assets/logo.png";
-import { Button } from "@/components/ui/button";
 import styles from "./styles.module.css";
 import { content } from "@/constants/content";
 
 const Footer = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
@@ -88,22 +83,6 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Back to Top Button */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        className={styles.backToTop}
-      >
-        <Button
-          onClick={scrollToTop}
-          size="icon"
-          className={styles.backToTopButton}
-        >
-          <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.2 }}>
-            <ArrowUp className={styles.backToTopIcon} />
-          </motion.div>
-        </Button>
-      </motion.div>
     </footer>
   );
 };

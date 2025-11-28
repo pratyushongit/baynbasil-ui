@@ -4,6 +4,7 @@ import OurStory from "@/components/OurStory";
 import ProductShowcase from "@/components/ProductShowcase";
 import WhyUs from "@/components/WhyUs";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
       <ProductShowcase />
       <WhyUs />
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }

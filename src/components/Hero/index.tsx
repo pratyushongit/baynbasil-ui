@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { ArrowRight, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import styles from "./styles.module.css";
 import { content } from "@/constants/content";
@@ -21,21 +22,6 @@ const Hero = () => {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
-  };
-
-  const buttonStyle = {
-    boxShadow: "var(--shadow-soft)",
-    transition: "all 0.3s",
-  };
-
-  const buttonHoverStyle = {
-    boxShadow: "var(--shadow-hover)",
-    transform: "translateY(-4px)",
-  };
-
-  const outlineButtonStyle = {
-    border: "2px solid var(--primary)",
-    color: "var(--primary)",
   };
 
   return (
@@ -65,38 +51,16 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className={styles.buttonGroup}
         >
-          <Button
-            size="lg"
-            onClick={() => scrollToSection("products")}
-            style={buttonStyle}
-            onMouseEnter={(e) => {
-              Object.assign(e.currentTarget.style, buttonHoverStyle);
-            }}
-            onMouseLeave={(e) => {
-              Object.assign(e.currentTarget.style, buttonStyle);
-            }}
-          >
+          <Button size="lg" onClick={() => scrollToSection("products")}>
             {content.hero.buttons.primary}
+            <ArrowRight />
           </Button>
           <Button
             size="lg"
             variant="outline"
             onClick={() => scrollToSection("story")}
-            style={{ ...buttonStyle, ...outlineButtonStyle }}
-            onMouseEnter={(e) => {
-              Object.assign(e.currentTarget.style, {
-                ...buttonHoverStyle,
-                background: "var(--primary)",
-                color: "var(--primary-foreground)",
-              });
-            }}
-            onMouseLeave={(e) => {
-              Object.assign(e.currentTarget.style, {
-                ...buttonStyle,
-                ...outlineButtonStyle,
-              });
-            }}
           >
+            <BookOpen />
             {content.hero.buttons.secondary}
           </Button>
         </motion.div>
