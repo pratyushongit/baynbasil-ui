@@ -23,7 +23,8 @@ export const content = {
   },
 
   story: {
-    title: "Too Lazy to grind 12 spices for a dish? We got you!",
+    question: "Too Lazy to grind 12 spices for a dish?",
+    answer: "We got you!",
     paragraphs: [
       "Bay 'n Basil was born from a simple belief: cooking should be an adventure, not a chore. We noticed that home cooks were overwhelmed by complicated recipes and endless ingredient lists.",
       "That's when we decided to craft something different. Our spice blends are thoughtfully curated to bring restaurant-quality flavors to your home kitchen. Each blend tells a story, inspired by traditional recipes but reimagined for the modern cook.",

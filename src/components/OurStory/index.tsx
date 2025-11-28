@@ -20,14 +20,15 @@ const OurStory = () => {
             animate={isInView ? { x: 0, opacity: 1 } : { x: -50, opacity: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <motion.h2
+            <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className={styles.title}
+              className={styles.titleBlock}
             >
-              {content.story.title}
-            </motion.h2>
+              <h2 className={styles.question}>{content.story.question}</h2>
+              <h3 className={styles.answer}>{content.story.answer}</h3>
+            </motion.div>
 
             <motion.div
               initial={{ y: 20, opacity: 0 }}
@@ -47,7 +48,11 @@ const OurStory = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className={styles.imageWrapper}
           >
-            <motion.div className={styles.imageContainer} whileHover={{ scale: 1.05 }} transition={{ duration: 0.4 }}>
+            <motion.div
+              className={styles.imageContainer}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.4 }}
+            >
               <Image
                 src={lifestyleImg}
                 alt={content.story.imageAlt}
