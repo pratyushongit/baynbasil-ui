@@ -2,8 +2,6 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
-import Image from "next/image";
-import logo from "@/assets/logo.png";
 import { Button } from "@/components/ui/button";
 import styles from "./styles.module.css";
 import { content } from "@/constants/content";
@@ -43,15 +41,6 @@ const Hero = () => {
   return (
     <section id="home" ref={ref} className={styles.hero}>
       <motion.div style={{ y, opacity }} className={styles.content}>
-        <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className={styles.logoWrapper}
-        >
-          <Image src={logo} alt={content.brand.name} className={styles.logo} width={300} height={120} priority />
-        </motion.div>
-
         <motion.h1
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -111,6 +100,15 @@ const Hero = () => {
             {content.hero.buttons.secondary}
           </Button>
         </motion.div>
+      </motion.div>
+
+      <motion.div
+        initial={{ x: 50, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
+        className={styles.imageContainer}
+      >
+        {/* Add your hero image here */}
       </motion.div>
     </section>
   );
