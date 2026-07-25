@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&amp;family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap">
+<style>
+body{margin:0;background:#1E0D05}
+a{color:inherit;text-decoration:none}
+a:hover{color:#F2A93B}
+::selection{background:#F2A93B;color:#1E0D05}
+[data-fpill]:hover{border-color:#F2A93B !important;color:#F2A93B !important}
+[data-fpill][data-on="1"]:hover{color:#2A1205 !important}
+[data-burger]{display:none !important}
+@media (max-width:820px){ [data-navlinks]{display:none !important} [data-burger]{display:flex !important} }
+a,button{transition:box-shadow .25s ease,filter .25s ease,background .25s ease,color .25s ease,border-color .25s ease}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="./image-slot.js"></script>
+</helmet>
+<div ref="{{ rootRef }}" style="background:var(--bg,#1E0D05);color:var(--cream,#F6EDDD);font-family:'Albert Sans',sans-serif;overflow-x:clip;min-height:100vh">
+
+<nav style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px clamp(20px,4vw,44px);background:color-mix(in srgb,var(--bg,#1E0D05) 72%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid rgba(246,237,221,.08)">
+  <a href="Bay%20n%20Basil%20Landing.dc.html" style="font-family:Gloock,serif;font-size:26px;letter-spacing:.01em">Bay&rsquo;n Basil</a>
+  <div data-navlinks="" style="display:flex;gap:34px;font-size:14px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--mut,rgba(246,237,221,.65))">
+    <a href="Bay%20n%20Basil%20Landing.dc.html">Home</a><a href="Bay%20n%20Basil%20Landing.dc.html#story">Story</a><a href="Bay%20n%20Basil%20Landing.dc.html#why">Why us</a><a href="Bay%20n%20Basil%20Landing.dc.html#contact">Contact</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px">
+    <button onClick="{{ openCart }}" style="font-family:'Albert Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:var(--accent,#F2A93B);color:var(--accentInk,#2A1205);border:none;border-radius:999px;padding:11px 22px;cursor:pointer">Cart &middot; {{ cartN }}</button>
+    <button data-burger="" onClick="{{ toggleMenu }}" aria-label="Menu" style="width:44px;height:44px;background:transparent;border:none;color:var(--cream,#F6EDDD);cursor:pointer;flex-direction:column;gap:5px;align-items:center;justify-content:center;padding:0">
+      <span style="width:18px;height:2px;background:currentColor;display:block"></span>
+      <span style="width:18px;height:2px;background:currentColor;display:block"></span>
+      <span style="width:18px;height:2px;background:currentColor;display:block"></span>
+    </button>
+  </div>
+</nav>
+<div data-screen-label="Mobile menu" style="position:fixed;inset:0;z-index:70;background:var(--bg,#1E0D05);display:flex;flex-direction:column;justify-content:center;gap:10px;padding:0 36px;transition:opacity .3s ease;opacity:{{ menuOp }};pointer-events:{{ menuEv }}">
+  <button onClick="{{ closeMenu }}" aria-label="Close menu" style="position:absolute;top:18px;right:20px;width:44px;height:44px;border-radius:50%;background:transparent;border:1px solid rgba(246,237,221,.3);color:var(--cream,#F6EDDD);font-size:16px;cursor:pointer">&#10005;</button>
+  <a href="Bay%20n%20Basil%20Landing.dc.html" style="font-family:Gloock,serif;font-size:42px;color:var(--cream,#F6EDDD)">Home</a>
+  <a href="Bay%20n%20Basil%20Landing.dc.html#story" style="font-family:Gloock,serif;font-size:42px;color:var(--cream,#F6EDDD)">Story</a>
+  <a href="Bay%20n%20Basil%20Landing.dc.html#why" style="font-family:Gloock,serif;font-size:42px;color:var(--cream,#F6EDDD)">Why us</a>
+  <a href="Bay%20n%20Basil%20Landing.dc.html#contact" style="font-family:Gloock,serif;font-size:42px;color:var(--cream,#F6EDDD)">Contact</a>
+</div>
+
+<header data-screen-label="Listing header" style="padding:clamp(120px,17vw,150px) clamp(20px,5vw,64px) 40px">
+  <div style="font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent,#F2A93B);margin-bottom:14px">The pantry</div>
+  <h1 style="margin:0 0 12px;font-family:Gloock,serif;font-weight:400;font-size:clamp(36px,5.6vw,86px);line-height:1">Every spice<br><span style="font-style:italic;color:var(--accent,#F2A93B)">we grind.</span></h1>
+  <p style="margin:0 0 36px;font-size:16px;color:var(--mut,rgba(246,237,221,.65))">{{ countLabel }} &middot; stone-ground &middot; pouched within 48 hours</p>
+  <div style="display:flex;gap:10px;flex-wrap:wrap">
+    <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+      <button onClick="{{ f.pick }}" style="font-family:'Albert Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;padding:12px 22px;border-radius:999px;cursor:pointer;transition:all .25s;background:{{ f.bg }};color:{{ f.fg }};border:1px solid {{ f.bd }}" data-fpill="" data-on="{{ f.on }}">{{ f.label }}</button>
+    </sc-for>
+  </div>
+</header>
+
+<main data-screen-label="Product grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,270px),1fr));gap:24px;padding:10px clamp(20px,5vw,64px) 90px">
+  <sc-for list="{{ shown }}" as="p" hint-placeholder-count="12">
+    <div style="background:linear-gradient(170deg,var(--panel,#823513),var(--panel2,#4A1E0C));border-radius:20px;padding:14px 14px 20px;transition:box-shadow .3s ease" style-hover="box-shadow:var(--cardhov,0 16px 40px rgba(242,169,59,.25))">
+      <div onClick="{{ p.open }}" style="position:relative;height:210px;border-radius:12px;overflow:hidden;background:rgba(0,0,0,.28);cursor:pointer">
+        <image-slot id="prod-{{ p.slug }}" shape="rect" placeholder="pouch &mdash; {{ p.name }}"></image-slot>
+      </div>
+      <div style="display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-top:16px">
+        <h3 onClick="{{ p.open }}" style="margin:0;font-family:Gloock,serif;font-weight:400;font-size:22px;line-height:1.1;cursor:pointer">{{ p.name }}</h3>
+        <span style="font-size:11.5px;font-weight:600;letter-spacing:.1em;color:rgba(246,237,221,.55);white-space:nowrap">{{ p.weight }}</span>
+      </div>
+      <p style="margin:6px 0 14px;font-size:13.5px;line-height:1.5;color:rgba(246,237,221,.72)">{{ p.note }}</p>
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px">
+        <span style="font-family:Gloock,serif;font-size:21px;color:var(--accent,#F2A93B)">{{ p.price }}</span>
+        <div style="display:flex;gap:8px">
+          <button onClick="{{ p.open }}" style="font-family:'Albert Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:var(--mut,rgba(246,237,221,.65));border:1px solid rgba(246,237,221,.25);border-radius:999px;padding:11px 16px;cursor:pointer;transition:all .25s" style-hover="color:var(--cream,#F6EDDD);border-color:rgba(246,237,221,.5)">Details</button>
+          <button onClick="{{ p.add }}" style="font-family:'Albert Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:var(--cream,#F6EDDD);border:1px solid rgba(246,237,221,.35);border-radius:999px;padding:11px 16px;cursor:pointer;transition:all .25s" style-hover="background:var(--accent,#F2A93B);color:var(--accentInk,#2A1205);border-color:var(--accent,#F2A93B)">Add</button>
+        </div>
+      </div>
+    </div>
+  </sc-for>
+</main>
+
+<div onClick="{{ closeDrawer }}" style="position:fixed;inset:0;z-index:80;background:rgba(10,4,1,.6);backdrop-filter:blur(3px);transition:opacity .35s ease;opacity:{{ ovOpacity }};pointer-events:{{ ovEvents }}"></div>
+<aside data-screen-label="Quick view drawer" style="position:fixed;top:0;right:0;bottom:0;z-index:90;width:min(460px,94vw);background:var(--panel2,#4A1E0C);box-shadow:-30px 0 80px rgba(0,0,0,.5);transition:transform .45s cubic-bezier(.32,.72,.24,1);transform:translateX({{ drawerX }});display:flex;flex-direction:column;overflow-y:auto">
+  <sc-if value="{{ hasSel }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:20px 26px;border-bottom:1px solid rgba(246,237,221,.1);position:sticky;top:0;background:var(--panel2,#4A1E0C);z-index:2">
+      <span style="font-size:12px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent,#F2A93B)">{{ selCat }}</span>
+      <button onClick="{{ closeDrawer }}" aria-label="Close" style="width:44px;height:44px;border-radius:50%;background:transparent;border:1px solid rgba(246,237,221,.3);color:var(--cream,#F6EDDD);font-size:17px;cursor:pointer" style-hover="border-color:var(--accent,#F2A93B);color:var(--accent,#F2A93B)">&#10005;</button>
+    </div>
+    <div style="padding:26px;display:flex;flex-direction:column;gap:22px">
+      <div style="height:260px;border-radius:14px;overflow:hidden;background:rgba(0,0,0,.28)">
+        <image-slot id="pd-{{ selSlug }}" shape="rect" placeholder="detail shot &mdash; {{ selName }}"></image-slot>
+      </div>
+      <div>
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px">
+          <h2 style="margin:0;font-family:Gloock,serif;font-weight:400;font-size:34px;line-height:1.05">{{ selName }}</h2>
+          <span style="font-family:Gloock,serif;font-size:26px;color:var(--accent,#F2A93B);white-space:nowrap">{{ selPrice }}</span>
+        </div>
+        <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+          <span style="font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(246,237,221,.25);border-radius:999px;padding:6px 13px;color:var(--mut,rgba(246,237,221,.65))">{{ selOrigin }}</span>
+          <span style="font-size:11.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(246,237,221,.25);border-radius:999px;padding:6px 13px;color:var(--mut,rgba(246,237,221,.65))">{{ selHeat }}</span>
+        </div>
+      </div>
+      <p style="margin:0;font-size:15px;line-height:1.7;color:rgba(246,237,221,.8)">{{ selDesc }}</p>
+      <div>
+        <div style="font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent,#F2A93B);margin-bottom:8px">Ingredients</div>
+        <p style="margin:0;font-size:14.5px;line-height:1.6;color:rgba(246,237,221,.75)">{{ selIngredients }}</p>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent,#F2A93B);margin-bottom:8px">Best in</div>
+        <p style="margin:0;font-size:14.5px;line-height:1.6;color:rgba(246,237,221,.75)">{{ selUse }}</p>
+      </div>
+      <div>
+        <div style="font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent,#F2A93B);margin-bottom:10px">Size</div>
+        <div style="display:flex;gap:8px">
+          <sc-for list="{{ sizes }}" as="s" hint-placeholder-count="3">
+            <button onClick="{{ s.pick }}" style="font-family:'Albert Sans',sans-serif;font-size:13px;font-weight:600;padding:11px 18px;border-radius:999px;cursor:pointer;transition:all .2s;background:{{ s.bg }};color:{{ s.fg }};border:1px solid {{ s.bd }}">{{ s.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+      <button onClick="{{ selAdd }}" style="font-family:'Albert Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--accent,#F2A93B);color:var(--accentInk,#2A1205);border:none;border-radius:999px;padding:17px 28px;cursor:pointer;margin-top:4px" style-hover="box-shadow:var(--hovsh,0 6px 20px rgba(242,169,59,.4));filter:var(--hovfil,none)">Add to cart &mdash; {{ selPrice }}</button>
+    </div>
+  </sc-if>
+</aside>
+
+<footer data-screen-label="Footer" style="padding:40px clamp(20px,5vw,64px);border-top:1px solid rgba(246,237,221,.1);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;font-size:13px;color:rgba(246,237,221,.45)">
+  <span>&copy; 2026 Bay&rsquo;n Basil</span>
+  <a href="Bay%20n%20Basil%20Landing.dc.html#contact" style="color:var(--mut,rgba(246,237,221,.65))">Contact us</a>
+</footer>
+<dc-import name="Cart" hint-size="1px,1px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cartN: 0, filter: 'All', sel: null, size: 1, menu: false };
+  rootRef = React.createRef();
+  data = [
+    { slug: 'red-chilli', name: 'Red Chilli', cat: 'Chillies', weight: '500g', price: '\u20B9249', note: 'Sun-dried Guntur pods. Proper heat.', heat: 'Hot', origin: 'Guntur, AP', desc: 'Whole Guntur Sannam pods, sun-dried on farm and stone-ground with the seeds in. Bold, clean heat with a smoky finish \u2014 the workhorse chilli of every Indian kitchen.', ingredients: '100% red chilli. Nothing else.', use: 'Curries, tadkas, pickles, chilli oil.' },
+    { slug: 'kashmiri', name: 'Kashmiri Chilli', cat: 'Chillies', weight: '250g', price: '\u20B9329', note: 'All colour, gentle warmth.', heat: 'Mild', origin: 'Byadgi, KA', desc: 'Deep crimson colour with barely-there heat. This is the chilli that makes butter chicken glow and rogan josh blush without setting anyone on fire.', ingredients: '100% Kashmiri-style byadgi chilli.', use: 'Butter chicken, rogan josh, tandoori marinades.' },
+    { slug: 'turmeric', name: 'Turmeric', cat: 'Ground', weight: '500g', price: '\u20B9199', note: 'Lakadong-grade, 5%+ curcumin.', heat: 'None', origin: 'Lakadong, ML', desc: 'High-curcumin roots from Meghalaya, boiled, dried and cold-ground. Earthy, bitter-sweet, and so pigmented a pinch does the work of a spoonful.', ingredients: '100% turmeric root. No fillers, no colour.', use: 'Dals, haldi doodh, marinades, rice.' },
+    { slug: 'garam', name: 'Garam Masala', cat: 'Blends', weight: '200g', price: '\u20B9299', note: 'Nine spices, roasted separately.', heat: 'Warm', origin: 'House blend', desc: 'Nine whole spices \u2014 each roasted separately to its own moment, then ground together once. Finish a dish with it and the kitchen changes weather.', ingredients: 'Coriander, cumin, black pepper, cardamom, cinnamon, clove, bay leaf, nutmeg, star anise.', use: 'Finishing curries, biryanis, kebabs.' },
+    { slug: 'coriander', name: 'Coriander', cat: 'Ground', weight: '500g', price: '\u20B9179', note: 'Cold-ground, citrus-bright.', heat: 'None', origin: 'Kota, RJ', desc: 'Eagle-grade seeds ground cold and slow so the lemony top notes survive. Sweet, floral, and nothing like the flat dust in supermarket boxes.', ingredients: '100% coriander seed.', use: 'Base masalas, chutneys, rasam.' },
+    { slug: 'cumin', name: 'Cumin, Whole', cat: 'Whole', weight: '250g', price: '\u20B9219', note: 'Smoky, unbroken seeds.', heat: 'None', origin: 'Unjha, GJ', desc: 'Plump, unbroken seeds with a deep smoky-sweet aroma. Bloom them in hot ghee and the whole house knows dinner is serious.', ingredients: '100% cumin seed.', use: 'Tadkas, jeera rice, raitas, spice blends.' },
+    { slug: 'pepper', name: 'Black Pepper', cat: 'Whole', weight: '250g', price: '\u20B9389', note: 'Malabar bold, sharp and floral.', heat: 'Hot', origin: 'Wayanad, KL', desc: 'Bold-grade Malabar corns picked ripe and sun-dried. Sharp heat up front, pine and citrus behind it. Grind fresh, always.', ingredients: '100% black peppercorn.', use: 'Pepper chicken, rasam, everything.' },
+    { slug: 'mustard', name: 'Mustard Seeds', cat: 'Whole', weight: '250g', price: '\u20B9149', note: 'Small, pungent, pop-ready.', heat: 'Pungent', origin: 'Jodhpur, RJ', desc: 'Small black seeds that pop clean and fast. Nutty once bloomed, fiery when crushed \u2014 the opening note of every South Indian tadka.', ingredients: '100% black mustard seed.', use: 'Tadkas, pickles, kadhi.' },
+    { slug: 'methi', name: 'Fenugreek', cat: 'Whole', weight: '200g', price: '\u20B9139', note: 'Bitter-sweet, maple-deep.', heat: 'None', origin: 'Nagaur, RJ', desc: 'Golden seeds with that unmistakable maple-bitter depth. A little goes far; toasted right, it rounds out pickles and sambar like nothing else.', ingredients: '100% fenugreek seed.', use: 'Pickles, sambar powder, methi dal.' },
+    { slug: 'sambar', name: 'Sambar Masala', cat: 'Blends', weight: '200g', price: '\u20B9269', note: 'Roasted dal-and-chilli classic.', heat: 'Medium', origin: 'House blend', desc: 'Roasted chana dal, coriander, byadgi chilli and fenugreek in the classic Kumbakonam proportion. One spoon, honest sambar.', ingredients: 'Coriander, chana dal, byadgi chilli, fenugreek, cumin, black pepper, turmeric, curry leaf, hing.', use: 'Sambar, kootu, roasted vegetables.' },
+    { slug: 'chaat', name: 'Chaat Masala', cat: 'Blends', weight: '150g', price: '\u20B9229', note: 'Tangy, sulphurous, addictive.', heat: 'Tangy', origin: 'House blend', desc: 'Kala namak, amchur and roasted cumin doing their loud, tangy thing. Dust it on fruit, fries, salads \u2014 anything that needs waking up.', ingredients: 'Amchur, kala namak, roasted cumin, coriander, black pepper, mint, hing, chilli.', use: 'Fruit, chaats, lemonade rims, fries.' },
+    { slug: 'cardamom', name: 'Green Cardamom', cat: 'Whole', weight: '100g', price: '\u20B9449', note: 'Fat 8mm pods, eucalyptus-sweet.', heat: 'None', origin: 'Idukki, KL', desc: 'Fat, bright-green 8mm pods from high-range Idukki estates. Floral, eucalyptus-sweet, and strong enough to perfume a whole pot of chai with three pods.', ingredients: '100% green cardamom.', use: 'Chai, kheer, biryani, baking.' }
+  ];
+  sizeOpts = ['100g', '250g', '500g'];
+  renderVals() {
+    const cats = ['All', 'Chillies', 'Ground', 'Whole', 'Blends'];
+    const shownData = this.data.filter(p => this.state.filter === 'All' || p.cat === this.state.filter);
+    const sel = this.state.sel;
+    return {
+      rootRef: this.rootRef,
+      cartN: this.state.cartN,
+      openCart: () => window.dispatchEvent(new Event('bnb:cart:open')),
+      toggleMenu: () => { const m = !this.state.menu; document.body.style.overflow = m ? 'hidden' : ''; this.setState({ menu: m }); },
+      closeMenu: () => { document.body.style.overflow = ''; this.setState({ menu: false }); },
+      menuOp: this.state.menu ? 1 : 0,
+      menuEv: this.state.menu ? 'auto' : 'none',
+      countLabel: this.data.length + ' single-origin spices & blends',
+      filters: cats.map(c => {
+        const on = this.state.filter === c;
+        return { label: c, pick: () => this.setState({ filter: c }), bg: on ? 'var(--accent,#F2A93B)' : 'transparent', fg: on ? 'var(--accentInk,#2A1205)' : 'var(--mut,rgba(246,237,221,.65))', bd: on ? 'var(--accent,#F2A93B)' : 'rgba(246,237,221,.3)', on: on ? '1' : '0' };
+      }),
+      shown: shownData.map(p => ({ ...p, open: () => this.setState({ sel: p, size: 1 }), add: () => window.dispatchEvent(new CustomEvent('bnb:cart:add', { detail: { slug: p.slug, name: p.name, size: p.weight, unit: +p.price.replace(/\D/g, '') } })) })),
+      hasSel: !!sel,
+      drawerX: sel ? '0%' : '105%',
+      ovOpacity: sel ? 1 : 0,
+      ovEvents: sel ? 'auto' : 'none',
+      closeDrawer: () => this.setState({ sel: null }),
+      selAdd: sel ? () => window.dispatchEvent(new CustomEvent('bnb:cart:add', { detail: { slug: sel.slug, name: sel.name, size: this.sizeOpts[this.state.size], unit: +sel.price.replace(/\D/g, '') } })) : null,
+      selSlug: sel ? sel.slug : '', selName: sel ? sel.name : '', selPrice: sel ? sel.price : '',
+      selCat: sel ? sel.cat : '', selOrigin: sel ? sel.origin : '', selHeat: sel ? 'Heat: ' + sel.heat : '',
+      selDesc: sel ? sel.desc : '', selIngredients: sel ? sel.ingredients : '', selUse: sel ? sel.use : '',
+      sizes: this.sizeOpts.map((lbl, i) => {
+        const on = this.state.size === i;
+        return { label: lbl, pick: () => this.setState({ size: i }), bg: on ? 'var(--cream,#F6EDDD)' : 'transparent', fg: on ? 'var(--accentInk,#2A1205)' : 'var(--mut,rgba(246,237,221,.65))', bd: on ? 'var(--cream,#F6EDDD)' : 'rgba(246,237,221,.3)' };
+      })
+    };
+  }
+  componentDidMount() {
+    this.applyTheme();
+    this._esc = e => { if (e.key === 'Escape' && this.state.sel) this.setState({ sel: null }); };
+    window.addEventListener('keydown', this._esc);
+    this._cartSync = e => this.setState({ cartN: e.detail.count });
+    window.addEventListener('bnb:cart:changed', this._cartSync);
+    try { const s = JSON.parse(localStorage.getItem('bnb-cart-v1') || '[]'); this.setState({ cartN: s.reduce((a, i) => a + i.qty, 0) }); } catch (e) {}
+  }
+  componentDidUpdate() { this.applyTheme(); }
+  componentWillUnmount() { window.removeEventListener('keydown', this._esc); window.removeEventListener('bnb:cart:changed', this._cartSync); }
+  applyTheme() {
+    const root = this.rootRef.current; if (!root) return;
+    const t = { bg: '#1E0D05', panel: '#823513', panel2: '#4A1E0C', accent: '#F2A93B', accentInk: '#2A1205', cream: '#F6EDDD', mut: 'rgba(246,237,221,.65)' };
+    Object.entries(t).forEach(([k, v]) => root.style.setProperty('--' + k, v));
+    root.style.setProperty('--hovsh', '0 6px 20px rgba(242,169,59,.4)');
+    root.style.setProperty('--hovfil', 'none');
+    root.style.setProperty('--cardhov', 'none');
+    document.body.style.background = t.bg;
+  }
+}
+</script>
+</body>
+</html>

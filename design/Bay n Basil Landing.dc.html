@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&amp;family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:#1E0D05}
+a{color:inherit;text-decoration:none}
+a:hover{color:#F2A93B}
+::selection{background:#F2A93B;color:#1E0D05}
+@keyframes bnb-mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes bnb-spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+[data-motion="off"] *{animation:none !important}
+[data-htrack]::-webkit-scrollbar{display:none}
+[data-burger]{display:none !important}
+@media (max-width:820px){ [data-navlinks]{display:none !important} [data-burger]{display:flex !important} }
+@media (max-width:1020px){ [data-heropack]{margin-top:44px} }
+a,button{transition:box-shadow .25s ease,filter .25s ease,background .25s ease,color .25s ease,border-color .25s ease}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="./image-slot.js"></script>
+</helmet>
+<div ref="{{ rootRef }}" style="background:var(--bg,#1E0D05);color:var(--cream,#F6EDDD);font-family:'Albert Sans',sans-serif;overflow-x:clip;min-height:100vh">
+
+<nav style="position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px clamp(20px,4vw,44px);background:color-mix(in srgb,var(--bg,#1E0D05) 72%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid rgba(246,237,221,.08)">
+  <a href="#top" style="font-family:Gloock,serif;font-size:26px;letter-spacing:.01em">Bay&rsquo;n Basil</a>
+  <div data-navlinks="" style="display:flex;gap:34px;font-size:14px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--mut,rgba(246,237,221,.65))">
+    <a href="#story">Story</a><a href="#products">Products</a><a href="#why">Why us</a><a href="#contact">Contact</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:10px">
+    <button onClick="{{ openCart }}" style="font-family:'Albert Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:var(--accent,#F2A93B);color:var(--accentInk,#2A1205);border:none;border-radius:999px;padding:11px 22px;cursor:pointer">Cart &middot; {{ cartN }}</button>
+    <button data-burger="" onClick="{{ toggleMenu }}" aria-label="Menu" style="width:44px;height:44px;background:transparent;border:none;color:var(--cream,#F6EDDD);cursor:pointer;flex-direction:column;gap:5px;align-items:center;justify-content:center;padding:0">
+      <span style="width:18px;height:2px;background:currentColor;display:block"></span>
+      <span style="width:18px;height:2px;background:currentColor;display:block"></span>
+      <span style="width:18px;height:2px;background:currentColor;display:block"></span>
+    </button>
+  </div>
+</nav>
+<div data-screen-label="Mobile menu" style="position:fixed;inset:0;z-index:70;background:var(--bg,#1E0D05);display:flex;flex-direction:column;justify-content:center;gap:10px;padding:0 36px;transition:opacity .3s ease;opacity:{{ menuOp }};pointer-events:{{ menuEv }}">
+  <button onClick="{{ closeMenu }}" aria-label="Close menu" style="position:absolute;top:18px;right:20px;width:44px;height:44px;border-radius:50%;background:transparent;border:1px solid rgba(246,237,221,.3);color:var(--cream,#F6EDDD);font-size:16px;cursor:pointer">&#10005;</button>
+  <a href="#story" onClick="{{ closeMenu }}" style="font-family:Gloock,serif;font-size:42px;color:var(--cream,#F6EDDD)">Story</a>
+  <a href="#products" onClick="{{ closeMenu }}" style="font-family:Gloock,serif;font-size:42px;color:var(--cream,#F6EDDD)">Products</a>
+  <a href="#why" onClick="{{ closeMenu }}" style="font-family:Gloock,serif;font-size:42px;color:var(--cream,#F6EDDD)">Why us</a>
+  <a href="#contact" onClick="{{ closeMenu }}" style="font-family:Gloock,serif;font-size:42px;color:var(--cream,#F6EDDD)">Contact</a>
+  <a href="Bay%20n%20Basil%20Products.dc.html" style="margin-top:22px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent,#F2A93B)">Browse all spices &#8594;</a>
+</div>
+
+<section id="top" data-screen-label="Hero" style="position:relative;min-height:100vh;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:clamp(32px,5vw,48px);align-items:center;padding:clamp(110px,16vw,140px) clamp(20px,5vw,64px) clamp(56px,8vw,80px);box-sizing:border-box">
+  <div data-parallax="" aria-hidden="true" style="position:absolute;left:0;right:0;top:52%;font-family:Gloock,serif;font-size:clamp(100px,24vw,380px);line-height:1;text-align:center;color:transparent;-webkit-text-stroke:1px rgba(246,237,221,.10);pointer-events:none;white-space:nowrap;user-select:none">MASALA</div>
+  <div style="position:relative;z-index:1;display:flex;flex-direction:column;gap:28px;max-width:720px">
+    <div data-hero="" style="display:flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent,#F2A93B)">
+      <span style="width:34px;height:2px;background:var(--accent,#F2A93B);display:inline-block"></span>
+      Small-batch Indian spices
+    </div>
+    <h1 style="margin:0;font-family:Gloock,serif;font-weight:400;font-size:clamp(36px,6vw,96px);line-height:.98;letter-spacing:-.01em">
+      <span data-heroline="" style="display:block">Ground slow.</span>
+      <span data-heroline="" style="display:block;font-style:italic;color:var(--accent,#F2A93B)">Tastes loud.</span>
+    </h1>
+    <p data-hero="" style="margin:0;max-width:46ch;font-size:18px;line-height:1.65;color:var(--mut,rgba(246,237,221,.65))">Whole spices from single-origin farms, stone-ground in small batches and pouched within 48 hours &mdash; so the aroma lands in your kitchen, not a warehouse.</p>
+    <div data-hero="" style="display:flex;gap:16px;flex-wrap:wrap">
+      <a href="#products" style="background:var(--accent,#F2A93B);color:var(--accentInk,#2A1205);font-weight:700;font-size:15px;letter-spacing:.04em;padding:16px 30px;border-radius:999px" style-hover="box-shadow:var(--hovsh,0 6px 20px rgba(242,169,59,.4));filter:var(--hovfil,none);color:var(--accentInk,#2A1205)">Shop the collection</a>
+      <a href="#story" style="border:1px solid rgba(246,237,221,.3);color:var(--cream,#F6EDDD);font-weight:600;font-size:15px;letter-spacing:.04em;padding:16px 30px;border-radius:999px" style-hover="border-color:var(--accent,#F2A93B);color:var(--accent,#F2A93B)">Our story</a>
+    </div>
+  </div>
+  <div data-hero="" data-heropack="" style="position:relative;z-index:1;justify-self:center">
+    <div style="width:min(420px,78vw);aspect-ratio:3/4;border-radius:18px;overflow:hidden;background:var(--panel,#823513);box-shadow:0 40px 80px rgba(0,0,0,.5);transform:rotate(2.5deg)">
+      <image-slot id="hero-pouch" shape="rect" placeholder="hero pouch shot &mdash; black pack, front"></image-slot>
+    </div>
+    <div style="position:absolute;top:-46px;left:-46px;width:120px;height:120px;animation:bnb-spin 18s linear infinite">
+      <svg viewBox="0 0 120 120" width="120" height="120" aria-hidden="true">
+        <defs><path id="bnbring" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"></path></defs>
+        <circle cx="60" cy="60" r="59" fill="var(--bg,#1E0D05)" stroke="rgba(246,237,221,.18)"></circle>
+        <text fill="var(--accent,#F2A93B)" font-size="12.5" font-weight="600" letter-spacing="2.5" font-family="Albert Sans,sans-serif"><textPath href="#bnbring">STONE-GROUND &bull; SMALL BATCH &bull; NO ADDITIVES &bull;</textPath></text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div data-screen-label="Marquee" style="position:relative;z-index:2;background:var(--accent,#F2A93B);color:var(--accentInk,#2A1205);transform:rotate(-1.6deg) scale(1.02);padding:14px 0;overflow:hidden;white-space:nowrap;font-family:Gloock,serif;font-size:26px">
+  <div style="display:inline-flex;gap:0;animation:bnb-mq 26s linear infinite">
+    <span style="padding-right:0">RED CHILLI &nbsp;&#10022;&nbsp; TURMERIC &nbsp;&#10022;&nbsp; GARAM MASALA &nbsp;&#10022;&nbsp; CORIANDER &nbsp;&#10022;&nbsp; CUMIN &nbsp;&#10022;&nbsp; KASHMIRI CHILLI &nbsp;&#10022;&nbsp;&nbsp;</span>
+    <span style="padding-right:0">RED CHILLI &nbsp;&#10022;&nbsp; TURMERIC &nbsp;&#10022;&nbsp; GARAM MASALA &nbsp;&#10022;&nbsp; CORIANDER &nbsp;&#10022;&nbsp; CUMIN &nbsp;&#10022;&nbsp; KASHMIRI CHILLI &nbsp;&#10022;&nbsp;&nbsp;</span>
+  </div>
+</div>
+
+<section id="story" data-screen-label="Story" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:clamp(40px,5vw,72px);align-items:center;padding:clamp(76px,12vw,120px) clamp(20px,5vw,64px);border-top:1px solid rgba(246,237,221,.08)">
+  <div data-reveal="" style="position:relative">
+    <div style="width:100%;aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:var(--panel2,#4A1E0C)">
+      <image-slot id="story-grind" shape="rect" placeholder="story image &mdash; hands grinding spices / farm"></image-slot>
+    </div>
+    <div style="position:absolute;right:-22px;bottom:-22px;background:var(--accent,#F2A93B);color:var(--accentInk,#2A1205);border-radius:14px;padding:18px 22px;font-family:Gloock,serif;font-size:20px;line-height:1.15;box-shadow:0 18px 40px rgba(0,0,0,.4)">Est. 2021<br><span style="font-family:'Albert Sans',sans-serif;font-size:12px;font-weight:600;letter-spacing:.1em">FAMILY-RUN</span></div>
+  </div>
+  <div>
+    <div data-reveal="" style="font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent,#F2A93B);margin-bottom:16px">Our story</div>
+    <h2 data-reveal="" style="margin:0 0 24px;font-family:Gloock,serif;font-weight:400;font-size:clamp(30px,4.2vw,64px);line-height:1.05">It started with a mortar, a pestle, and a stubborn grandmother.</h2>
+    <p data-reveal="" style="margin:0 0 16px;font-size:17px;line-height:1.7;color:var(--mut,rgba(246,237,221,.65));max-width:56ch">She refused packet masala her whole life &mdash; she could taste the difference between spice that was ground and spice that was burnt flat in a steel mill. Bay&rsquo;n Basil is her kitchen, scaled just enough.</p>
+    <p data-reveal="" style="margin:0 0 40px;font-size:17px;line-height:1.7;color:var(--mut,rgba(246,237,221,.65));max-width:56ch">We buy whole spices directly from farm clusters we can name, grind them cold and slow, and pouch them the same week. Nothing else goes in. Ever.</p>
+    <div data-reveal="" style="display:flex;gap:clamp(28px,4.5vw,52px) clamp(32px,5vw,52px);flex-wrap:wrap">
+      <div><div style="font-family:Gloock,serif;font-size:clamp(38px,5vw,52px);line-height:1;color:var(--accent,#F2A93B)"><span data-count="14">0</span></div><div style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut,rgba(246,237,221,.65));margin-top:8px">Partner farms</div></div>
+      <div><div style="font-family:Gloock,serif;font-size:clamp(38px,5vw,52px);line-height:1;color:var(--accent,#F2A93B)"><span data-count="48">0</span>h</div><div style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut,rgba(246,237,221,.65));margin-top:8px">Mill to pouch</div></div>
+      <div><div style="font-family:Gloock,serif;font-size:clamp(38px,5vw,52px);line-height:1;color:var(--accent,#F2A93B)"><span data-count="0">0</span></div><div style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--mut,rgba(246,237,221,.65));margin-top:8px">Additives, ever</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="products" data-screen-label="Products" style="position:relative;padding:clamp(70px,11vw,110px) 0 clamp(56px,9vw,90px);overflow:hidden;border-top:1px solid rgba(246,237,221,.08)">
+  <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:28px;padding:0 clamp(20px,5vw,64px);margin-bottom:44px">
+    <div data-reveal="">
+      <div style="font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent,#F2A93B);margin-bottom:14px">The collection</div>
+      <h2 style="margin:0;font-family:Gloock,serif;font-weight:400;font-size:clamp(32px,4.6vw,72px);line-height:1.02">Bestsellers,<br>ground this week.</h2>
+    </div>
+    <div data-reveal="" style="display:flex;align-items:center;gap:14px">
+      <button onClick="{{ scrollPrev }}" aria-label="Previous products" style="width:52px;height:52px;border-radius:50%;background:transparent;border:1px solid rgba(246,237,221,.35);color:var(--cream,#F6EDDD);font-size:20px;cursor:pointer;transition:all .25s" style-hover="background:var(--accent,#F2A93B);color:var(--accentInk,#2A1205);border-color:var(--accent,#F2A93B)">&#8592;</button>
+      <button onClick="{{ scrollNext }}" aria-label="Next products" style="width:52px;height:52px;border-radius:50%;background:transparent;border:1px solid rgba(246,237,221,.35);color:var(--cream,#F6EDDD);font-size:20px;cursor:pointer;transition:all .25s" style-hover="background:var(--accent,#F2A93B);color:var(--accentInk,#2A1205);border-color:var(--accent,#F2A93B)">&#8594;</button>
+    </div>
+  </div>
+  <div data-htrack="" ref="{{ trackRef }}" style="display:flex;gap:24px;padding:10px clamp(20px,5vw,64px) 28px;overflow-x:auto;scroll-snap-type:x proximity;scroll-padding-left:clamp(20px,5vw,64px);scrollbar-width:none">
+    <sc-for list="{{ products }}" as="p" hint-placeholder-count="6">
+      <div style="width:min(320px,82vw);flex:none;scroll-snap-align:start;background:linear-gradient(170deg,var(--panel,#823513),var(--panel2,#4A1E0C));border-radius:20px;padding:16px 16px 22px;box-sizing:border-box;transition:box-shadow .3s ease" style-hover="box-shadow:var(--cardhov,0 16px 40px rgba(242,169,59,.25))">
+        <div style="height:230px;border-radius:12px;overflow:hidden;background:rgba(0,0,0,.28)">
+          <image-slot id="prod-{{ p.slug }}" shape="rect" placeholder="pouch shot &mdash; {{ p.name }}"></image-slot>
+        </div>
+        <div style="display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin-top:18px">
+          <h3 style="margin:0;font-family:Gloock,serif;font-weight:400;font-size:25px;line-height:1.1">{{ p.name }}</h3>
+          <span style="font-size:12px;font-weight:600;letter-spacing:.1em;color:rgba(246,237,221,.55);white-space:nowrap">{{ p.weight }}</span>
+        </div>
+        <p style="margin:8px 0 16px;font-size:14px;line-height:1.5;color:rgba(246,237,221,.72);min-height:42px">{{ p.note }}</p>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+          <span style="font-family:Gloock,serif;font-size:23px;color:var(--accent,#F2A93B)">{{ p.price }}</span>
+          <button onClick="{{ p.add }}" style="font-family:'Albert Sans',sans-serif;font-size:12.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;background:transparent;color:var(--cream,#F6EDDD);border:1px solid rgba(246,237,221,.35);border-radius:999px;padding:12px 20px;cursor:pointer;transition:all .25s" style-hover="background:var(--accent,#F2A93B);color:var(--accentInk,#2A1205);border-color:var(--accent,#F2A93B)">Add to cart</button>
+        </div>
+      </div>
+    </sc-for>
+    <a href="Bay%20n%20Basil%20Products.dc.html" style="width:min(280px,70vw);flex:none;scroll-snap-align:start;border:1px dashed rgba(246,237,221,.3);border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:24px;box-sizing:border-box;color:var(--cream,#F6EDDD);transition:all .3s ease" style-hover="border-color:var(--accent,#F2A93B);color:var(--accent,#F2A93B)">
+      <span style="font-family:Gloock,serif;font-size:28px;line-height:1.2">18 more spices<br>in the pantry</span>
+      <span style="font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase">Browse all &#8594;</span>
+    </a>
+  </div>
+  <div data-reveal="" style="display:flex;justify-content:center;margin-top:20px">
+    <a href="Bay%20n%20Basil%20Products.dc.html" style="background:var(--accent,#F2A93B);color:var(--accentInk,#2A1205);font-weight:700;font-size:15px;letter-spacing:.04em;padding:16px 32px;border-radius:999px" style-hover="box-shadow:var(--hovsh,0 6px 20px rgba(242,169,59,.4));filter:var(--hovfil,none);color:var(--accentInk,#2A1205)">View all products</a>
+  </div>
+</section>
+
+<section id="why" data-screen-label="Why us" style="background:var(--lightbg,#F6EDDD);color:var(--lightink,#2A1205);padding:clamp(76px,12vw,120px) clamp(20px,5vw,64px)">
+  <div data-reveal="" style="font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--panel,#823513);margin-bottom:16px">Why Bay&rsquo;n Basil</div>
+  <h2 data-reveal="" style="margin:0 0 64px;font-family:Gloock,serif;font-weight:400;font-size:clamp(30px,4.2vw,64px);line-height:1.05;max-width:18ch">The pouch is black. The label is honest.</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:40px">
+    <sc-for list="{{ reasons }}" as="r" hint-placeholder-count="4">
+      <div data-reveal="" style="border-top:2px solid var(--lightink,#2A1205);padding-top:22px">
+        <div style="font-family:Gloock,serif;font-size:44px;color:var(--panel,#823513)">{{ r.num }}</div>
+        <h3 style="margin:16px 0 10px;font-family:Gloock,serif;font-weight:400;font-size:23px;line-height:1.2">{{ r.title }}</h3>
+        <p style="margin:0;font-size:14.5px;line-height:1.6;color:rgba(42,18,5,.68)">{{ r.copy }}</p>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<footer id="contact" data-screen-label="Footer" style="padding:clamp(70px,11vw,110px) clamp(20px,5vw,64px) 40px">
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:clamp(40px,5vw,64px);align-items:start;padding-bottom:72px;border-bottom:1px solid rgba(246,237,221,.12)">
+    <div>
+      <h2 data-reveal="" style="margin:0 0 28px;font-family:Gloock,serif;font-weight:400;font-size:clamp(34px,5.4vw,86px);line-height:1">Let&rsquo;s spice<br><span style="font-style:italic;color:var(--accent,#F2A93B)">things up.</span></h2>
+      <div data-reveal="" style="display:flex;flex-direction:column;gap:10px;font-size:17px;color:var(--mut,rgba(246,237,221,.65))">
+        <a href="mailto:hello@baynbasil.com" style="color:var(--cream,#F6EDDD)">hello@baynbasil.com</a>
+        <span>+91 98765 43210</span>
+        <span>Bengaluru, India</span>
+      </div>
+    </div>
+    <div data-reveal="">
+      <div style="font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mut,rgba(246,237,221,.65));margin-bottom:16px">Get recipes &amp; first-batch drops</div>
+      <div style="display:flex;gap:10px">
+        <input placeholder="your@email.com" style="flex:1;background:transparent;border:1px solid rgba(246,237,221,.3);border-radius:999px;padding:15px 22px;color:var(--cream,#F6EDDD);font-family:'Albert Sans',sans-serif;font-size:15px;outline:none">
+        <button style="background:var(--accent,#F2A93B);color:var(--accentInk,#2A1205);border:none;border-radius:999px;padding:15px 26px;font-family:'Albert Sans',sans-serif;font-weight:700;font-size:14px;letter-spacing:.05em;cursor:pointer">Join</button>
+      </div>
+      <div style="display:flex;gap:26px;margin-top:36px;font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mut,rgba(246,237,221,.65))">
+        <a href="#top">Instagram</a><a href="#top">YouTube</a><a href="#top">WhatsApp</a>
+      </div>
+    </div>
+  </div>
+  <div style="display:flex;justify-content:space-between;align-items:center;padding-top:26px;font-size:12.5px;letter-spacing:.06em;color:rgba(246,237,221,.4)">
+    <span>&copy; 2026 Bay&rsquo;n Basil &middot; All rights reserved</span>
+    <span>Made with heat, not haste</span>
+  </div>
+</footer>
+<dc-import name="Cart" hint-size="1px,1px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;animations&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  state = { cartN: 0, menu: false };
+  rootRef = React.createRef();
+  trackRef = React.createRef();
+  renderVals() {
+    const scrollTrack = dir => {
+      const t = this.trackRef.current; if (!t) return;
+      const pitch = 344, pad = parseFloat(getComputedStyle(t).paddingLeft) || 0;
+      const cur = Math.round((t.scrollLeft - pad) / pitch);
+      const target = pad + Math.max(0, cur + dir) * pitch;
+      t.scrollTo({ left: Math.min(target, t.scrollWidth - t.clientWidth), behavior: 'smooth' });
+    };
+    return {
+      rootRef: this.rootRef,
+      trackRef: this.trackRef,
+      scrollPrev: () => scrollTrack(-1),
+      scrollNext: () => scrollTrack(1),
+      cartN: this.state.cartN,
+      openCart: () => window.dispatchEvent(new Event('bnb:cart:open')),
+      toggleMenu: () => { const m = !this.state.menu; document.body.style.overflow = m ? 'hidden' : ''; this.setState({ menu: m }); },
+      closeMenu: () => { document.body.style.overflow = ''; this.setState({ menu: false }); },
+      menuOp: this.state.menu ? 1 : 0,
+      menuEv: this.state.menu ? 'auto' : 'none',
+      products: [
+        { slug: 'red-chilli', name: 'Red Chilli', weight: '500g', note: 'Sun-dried Guntur pods. Proper heat.', price: '\u20B9249' },
+        { slug: 'kashmiri', name: 'Kashmiri Chilli', weight: '250g', note: 'All colour, gentle warmth.', price: '\u20B9329' },
+        { slug: 'turmeric', name: 'Turmeric', weight: '500g', note: 'Lakadong-grade, 5%+ curcumin.', price: '\u20B9199' },
+        { slug: 'garam', name: 'Garam Masala', weight: '200g', note: 'Nine spices, roasted separately.', price: '\u20B9299' },
+        { slug: 'coriander', name: 'Coriander', weight: '500g', note: 'Cold-ground, citrus-bright.', price: '\u20B9179' },
+        { slug: 'cumin', name: 'Cumin, Whole', weight: '250g', note: 'Smoky, unbroken seeds.', price: '\u20B9219' }
+      ].map(p => ({ ...p, add: () => window.dispatchEvent(new CustomEvent('bnb:cart:add', { detail: { slug: p.slug, name: p.name, size: p.weight, unit: +p.price.replace(/\D/g, '') } })) })),
+      reasons: [
+        { num: '01', title: 'Stone-ground, small batches', copy: 'Industrial mills run hot and cook the volatile oils. We grind slow and cold, a few kilos at a time.' },
+        { num: '02', title: 'Single-origin sourcing', copy: 'One farm cluster per spice, bought whole and direct. We can tell you the village on every pouch.' },
+        { num: '03', title: 'Nothing added', copy: 'No colours, no preservatives, no anti-caking agents. The ingredient list is one word long.' },
+        { num: '04', title: 'Pouched in 48 hours', copy: 'Milled close to order and sealed within two days, so peak aroma happens in your kitchen.' }
+      ]
+    };
+  }
+  componentDidMount() {
+    this.applyTheme(); this.waitForGsap(0);
+    this._cartSync = e => this.setState({ cartN: e.detail.count });
+    window.addEventListener('bnb:cart:changed', this._cartSync);
+    try { const s = JSON.parse(localStorage.getItem('bnb-cart-v1') || '[]'); this.setState({ cartN: s.reduce((a, i) => a + i.qty, 0) }); } catch (e) {}
+  }
+  componentDidUpdate(prevProps) {
+    this.applyTheme();
+    if (prevProps && prevProps.heroText !== this.props.heroText && window.gsap && window.ScrollTrigger && this._ctx) this.buildAnim();
+  }
+  componentWillUnmount() {
+    if (this._ctx) { this._ctx.revert(); this._ctx = null; }
+    clearInterval(this._health);
+    window.removeEventListener('bnb:cart:changed', this._cartSync);
+    this._unmounted = true;
+  }
+  applyTheme() {
+    const root = this.rootRef.current; if (!root) return;
+    const t = { bg: '#1E0D05', panel: '#823513', panel2: '#4A1E0C', accent: '#F2A93B', accentInk: '#2A1205', cream: '#F6EDDD', mut: 'rgba(246,237,221,.65)', lightbg: '#F6EDDD', lightink: '#2A1205' };
+    Object.entries(t).forEach(([k, v]) => root.style.setProperty('--' + k, v));
+    root.style.setProperty('--hovsh', '0 6px 20px rgba(242,169,59,.4)');
+    root.style.setProperty('--hovfil', 'none');
+    root.style.setProperty('--cardhov', '0 8px 22px rgba(242,169,59,.22), 0 0 0 1px rgba(242,169,59,.4)');
+    root.setAttribute('data-motion', (this.props.animations ?? true) ? 'on' : 'off');
+    document.body.style.background = t.bg;
+  }
+  waitForGsap(n) {
+    if (this._unmounted) return;
+    if (window.gsap && window.ScrollTrigger && this.rootRef.current) return this.setupAnim();
+    if (n < 80) setTimeout(() => this.waitForGsap(n + 1), 150);
+  }
+  setupAnim() {
+    gsap.registerPlugin(ScrollTrigger);
+    if (!(this.props.animations ?? true)) return;
+    this.buildAnim();
+    clearInterval(this._health);
+    this._health = setInterval(() => {
+      if (this._unmounted) { clearInterval(this._health); return; }
+      const alive = ScrollTrigger.getAll().length > 0 && this._watchEl && this._watchEl.isConnected;
+      if (!alive) this.buildAnim();
+    }, 1000);
+  }
+  buildAnim() {
+    const root = this.rootRef.current; if (!root) return;
+    if (this._ctx) { this._ctx.revert(); this._ctx = null; }
+    // unwrap any stale pin-spacers left by killed triggers
+    root.querySelectorAll('.pin-spacer').forEach(sp => {
+      const p = sp.parentNode; if (!p) return;
+      while (sp.firstChild) p.insertBefore(sp.firstChild, sp);
+      p.removeChild(sp);
+    });
+    // clear stranded animated props (opacity/transform only) from dead tweens
+    gsap.set(root.querySelectorAll('[data-reveal],[data-hero],[data-heroline],[data-parallax],[data-htrack]'), { clearProps: 'opacity,transform' });
+    this._watchEl = root.querySelector('[data-htrack]');
+    this._ctx = gsap.context(() => {
+      const $ = s => root.querySelectorAll(s);
+      gsap.from($('[data-hero]'), { y: 46, opacity: 0, stagger: 0.09, duration: 0.9, ease: 'power3.out', delay: 0.15, clearProps: 'opacity,transform' });
+      const mode = 'blur';
+      const split = el => {
+        el.innerHTML = el.dataset.origHtml.split('').map(ch => ch === ' ' ? ' ' : '<span style="display:inline-block">' + ch + '</span>').join('');
+        return el.querySelectorAll('span');
+      };
+      Array.from($('[data-heroline]')).forEach((el, i) => {
+        if (!el.dataset.origHtml) el.dataset.origHtml = el.innerHTML; else el.innerHTML = el.dataset.origHtml;
+        const delay = 0.25 + i * 0.4;
+        if (mode === 'rise') gsap.from(el, { y: 60, opacity: 0, duration: 0.9, ease: 'power3.out', delay, clearProps: 'opacity,transform' });
+        else if (mode === 'slide') gsap.from(el, { x: -90, opacity: 0, duration: 0.9, ease: 'power3.out', delay, clearProps: 'opacity,transform' });
+        else if (mode === 'pop') gsap.from(el, { scale: 0.82, opacity: 0, transformOrigin: 'left bottom', duration: 0.8, ease: 'back.out(1.6)', delay, clearProps: 'opacity,transform' });
+        else if (mode === 'wipe') gsap.fromTo(el, { clipPath: 'inset(-10% 100% -10% 0)', opacity: 1 }, { clipPath: 'inset(-10% -5% -10% 0)', duration: 1, ease: 'power2.inOut', delay, clearProps: 'clipPath' });
+        else if (mode === 'typewriter') { const ch = split(el); gsap.set(ch, { opacity: 0 }); gsap.to(ch, { opacity: 1, duration: 0.02, stagger: 0.06, delay }); }
+        else if (mode === 'chars') { const ch = split(el); gsap.from(ch, { y: '0.55em', opacity: 0, rotate: 7, duration: 0.6, ease: 'power3.out', stagger: 0.035, delay }); }
+        else if (mode === 'blur') { const ch = split(el); gsap.from(ch, { opacity: 0, filter: 'blur(14px)', duration: 0.7, ease: 'power2.out', stagger: 0.04, delay }); }
+      });
+      const hero = root.querySelector('#top');
+      gsap.to($('[data-parallax]'), { yPercent: -40, ease: 'none', scrollTrigger: { trigger: hero, start: 'top top', end: 'bottom top', scrub: true } });
+      gsap.utils.toArray($('[data-reveal]')).forEach(el => {
+        gsap.fromTo(el, { y: 36, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power2.out', clearProps: 'opacity,transform', scrollTrigger: { trigger: el, start: 'top 88%' } });
+      });
+      gsap.utils.toArray($('[data-count]')).forEach(el => {
+        const end = +el.getAttribute('data-count'), obj = { v: 0 };
+        gsap.to(obj, { v: end, duration: 1.4, ease: 'power1.out', onUpdate: () => { el.textContent = Math.round(obj.v); }, onComplete: () => { el.textContent = end; }, scrollTrigger: { trigger: el, start: 'top 88%' } });
+      });
+    }, root);
+    setTimeout(() => { if (this._ctx && window.ScrollTrigger) ScrollTrigger.refresh(); }, 600);
+  }
+}
+</script>
+</body>
+</html>

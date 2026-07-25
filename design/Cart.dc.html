@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&amp;family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap">
+<style>
+input::placeholder,textarea::placeholder{color:rgba(246,237,221,.35)}
+a,button{transition:box-shadow .25s ease,filter .25s ease,background .25s ease,color .25s ease,border-color .25s ease}
+</style>
+</helmet>
+<div style="font-family:'Albert Sans',sans-serif">
+<div onClick="{{ close }}" style="position:fixed;inset:0;z-index:100;background:rgba(10,4,1,.62);backdrop-filter:blur(3px);transition:opacity .35s ease;opacity:{{ ovOpacity }};pointer-events:{{ ovEvents }}"></div>
+<aside data-screen-label="Cart drawer" style="position:fixed;top:0;right:0;bottom:0;z-index:110;width:min(440px,94vw);background:var(--panel2,#4A1E0C);color:var(--cream,#F6EDDD);box-shadow:-30px 0 80px rgba(0,0,0,.5);transition:transform .45s cubic-bezier(.32,.72,.24,1);transform:translateX({{ drawerX }});display:flex;flex-direction:column">
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 24px;border-bottom:1px solid rgba(246,237,221,.1)">
+    <div style="display:flex;align-items:center;gap:12px">
+      <sc-if value="{{ isCheckout }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ backToCart }}" aria-label="Back to cart" style="width:42px;height:42px;border-radius:50%;background:transparent;border:1px solid rgba(246,237,221,.3);color:var(--cream,#F6EDDD);font-size:16px;cursor:pointer" style-hover="border-color:var(--accent,#F2A93B);color:var(--accent,#F2A93B)">&#8592;</button>
+      </sc-if>
+      <span style="font-family:Gloock,serif;font-size:24px">{{ title }}</span>
+    </div>
+    <button onClick="{{ close }}" aria-label="Close" style="width:42px;height:42px;border-radius:50%;background:transparent;border:1px solid rgba(246,237,221,.3);color:var(--cream,#F6EDDD);font-size:16px;cursor:pointer" style-hover="border-color:var(--accent,#F2A93B);color:var(--accent,#F2A93B)">&#10005;</button>
+  </div>
+
+  <sc-if value="{{ isCart }}" hint-placeholder-val="{{ true }}">
+    <div style="flex:1;overflow-y:auto;padding:20px 24px;display:flex;flex-direction:column;gap:12px">
+      <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center;padding:70px 10px">
+          <div style="font-family:Gloock,serif;font-size:26px">Your cart is empty</div>
+          <p style="margin:10px 0 0;font-size:14.5px;color:var(--mut,rgba(246,237,221,.65))">Add a few spices and come back.</p>
+        </div>
+      </sc-if>
+      <sc-for list="{{ items }}" as="it" hint-placeholder-count="2">
+        <div style="display:flex;align-items:center;gap:12px;background:rgba(0,0,0,.22);border-radius:14px;padding:14px 16px">
+          <div style="flex:1;min-width:0">
+            <div style="font-family:Gloock,serif;font-size:18px">{{ it.name }}</div>
+            <div style="font-size:12px;color:var(--mut,rgba(246,237,221,.65));margin-top:3px">{{ it.size }} &middot; &#8377;{{ it.unit }} each</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px">
+            <button onClick="{{ it.dec }}" aria-label="Decrease" style="width:30px;height:30px;border-radius:50%;background:transparent;border:1px solid rgba(246,237,221,.3);color:var(--cream,#F6EDDD);font-size:15px;cursor:pointer;line-height:1" style-hover="border-color:var(--accent,#F2A93B)">&#8722;</button>
+            <span style="min-width:18px;text-align:center;font-weight:600;font-size:14px">{{ it.qty }}</span>
+            <button onClick="{{ it.inc }}" aria-label="Increase" style="width:30px;height:30px;border-radius:50%;background:transparent;border:1px solid rgba(246,237,221,.3);color:var(--cream,#F6EDDD);font-size:15px;cursor:pointer;line-height:1" style-hover="border-color:var(--accent,#F2A93B)">+</button>
+          </div>
+          <div style="width:60px;text-align:right;font-family:Gloock,serif;font-size:17px;color:var(--accent,#F2A93B)">&#8377;{{ it.line }}</div>
+          <button onClick="{{ it.remove }}" aria-label="Remove" style="background:none;border:none;color:rgba(246,237,221,.45);font-size:13px;cursor:pointer;padding:6px" style-hover="color:#E0492E">&#10005;</button>
+        </div>
+      </sc-for>
+    </div>
+    <sc-if value="{{ hasItems }}" hint-placeholder-val="{{ false }}">
+      <div style="padding:20px 24px;border-top:1px solid rgba(246,237,221,.1);display:flex;flex-direction:column;gap:14px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <span style="font-size:14px;color:var(--mut,rgba(246,237,221,.65))">Subtotal</span>
+          <span style="font-family:Gloock,serif;font-size:26px;color:var(--accent,#F2A93B)">&#8377;{{ subtotal }}</span>
+        </div>
+        <button onClick="{{ toCheckout }}" style="font-family:'Albert Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--accent,#F2A93B);color:var(--accentInk,#2A1205);border:none;border-radius:999px;padding:17px 28px;cursor:pointer" style-hover="box-shadow:var(--hovsh,0 6px 20px rgba(242,169,59,.4));filter:var(--hovfil,none)">Proceed to order</button>
+      </div>
+    </sc-if>
+  </sc-if>
+
+  <sc-if value="{{ isCheckout }}" hint-placeholder-val="{{ false }}">
+    <div style="flex:1;overflow-y:auto;padding:20px 24px;display:flex;flex-direction:column;gap:18px">
+      <div style="background:rgba(0,0,0,.22);border-radius:14px;padding:16px 18px;display:flex;flex-direction:column;gap:8px">
+        <div style="font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent,#F2A93B);margin-bottom:2px">Order summary</div>
+        <sc-for list="{{ items }}" as="it" hint-placeholder-count="2">
+          <div style="display:flex;justify-content:space-between;gap:12px;font-size:14px">
+            <span style="color:rgba(246,237,221,.8)">{{ it.name }} ({{ it.size }}) &times; {{ it.qty }}</span>
+            <span style="font-weight:600">&#8377;{{ it.line }}</span>
+          </div>
+        </sc-for>
+        <div style="display:flex;justify-content:space-between;border-top:1px solid rgba(246,237,221,.15);padding-top:10px;margin-top:4px">
+          <span style="font-weight:600;font-size:14px">Total</span>
+          <span style="font-family:Gloock,serif;font-size:20px;color:var(--accent,#F2A93B)">&#8377;{{ subtotal }}</span>
+        </div>
+      </div>
+      <div>
+        <label style="font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mut,rgba(246,237,221,.65));margin-bottom:7px;display:block">Full name *</label>
+        <input value="{{ fName }}" onChange="{{ setName }}" placeholder="Asha Rao" style="width:100%;box-sizing:border-box;background:rgba(0,0,0,.22);border:1px solid rgba(246,237,221,.22);border-radius:12px;padding:13px 16px;color:var(--cream,#F6EDDD);font-family:'Albert Sans',sans-serif;font-size:14.5px;outline:none" style-focus="border-color:var(--accent,#F2A93B)">
+      </div>
+      <div>
+        <label style="font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mut,rgba(246,237,221,.65));margin-bottom:7px;display:block">Phone (WhatsApp) *</label>
+        <input value="{{ fPhone }}" onChange="{{ setPhone }}" type="tel" placeholder="98765 43210" style="width:100%;box-sizing:border-box;background:rgba(0,0,0,.22);border:1px solid rgba(246,237,221,.22);border-radius:12px;padding:13px 16px;color:var(--cream,#F6EDDD);font-family:'Albert Sans',sans-serif;font-size:14.5px;outline:none" style-focus="border-color:var(--accent,#F2A93B)">
+      </div>
+      <div>
+        <label style="font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mut,rgba(246,237,221,.65));margin-bottom:7px;display:block">Address *</label>
+        <textarea value="{{ fAddress }}" onChange="{{ setAddress }}" rows="2" placeholder="Flat, street, area" style="width:100%;box-sizing:border-box;background:rgba(0,0,0,.22);border:1px solid rgba(246,237,221,.22);border-radius:12px;padding:13px 16px;color:var(--cream,#F6EDDD);font-family:'Albert Sans',sans-serif;font-size:14.5px;resize:vertical;outline:none" style-focus="border-color:var(--accent,#F2A93B)"></textarea>
+      </div>
+      <div>
+        <label style="font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mut,rgba(246,237,221,.65));margin-bottom:7px;display:block">Landmark</label>
+        <input value="{{ fLandmark }}" onChange="{{ setLandmark }}" placeholder="Near&hellip; (optional)" style="width:100%;box-sizing:border-box;background:rgba(0,0,0,.22);border:1px solid rgba(246,237,221,.22);border-radius:12px;padding:13px 16px;color:var(--cream,#F6EDDD);font-family:'Albert Sans',sans-serif;font-size:14.5px;outline:none" style-focus="border-color:var(--accent,#F2A93B)">
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div>
+          <label style="font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mut,rgba(246,237,221,.65));margin-bottom:7px;display:block">Pincode *</label>
+          <input value="{{ fPincode }}" onChange="{{ setPincode }}" inputMode="numeric" placeholder="560001" style="width:100%;box-sizing:border-box;background:rgba(0,0,0,.22);border:1px solid rgba(246,237,221,.22);border-radius:12px;padding:13px 16px;color:var(--cream,#F6EDDD);font-family:'Albert Sans',sans-serif;font-size:14.5px;outline:none" style-focus="border-color:var(--accent,#F2A93B)">
+        </div>
+        <div>
+          <label style="font-size:11.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mut,rgba(246,237,221,.65));margin-bottom:7px;display:block">State *</label>
+          <input value="{{ fState }}" onChange="{{ setStateField }}" placeholder="Karnataka" style="width:100%;box-sizing:border-box;background:rgba(0,0,0,.22);border:1px solid rgba(246,237,221,.22);border-radius:12px;padding:13px 16px;color:var(--cream,#F6EDDD);font-family:'Albert Sans',sans-serif;font-size:14.5px;outline:none" style-focus="border-color:var(--accent,#F2A93B)">
+        </div>
+      </div>
+    </div>
+    <div style="padding:20px 24px;border-top:1px solid rgba(246,237,221,.1);display:flex;flex-direction:column;gap:10px">
+      <button onClick="{{ placeOrder }}" style="font-family:'Albert Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:#25D366;color:#0B2A16;border:none;border-radius:999px;padding:17px 28px;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px" style-hover="box-shadow:var(--hovsh,0 6px 20px rgba(242,169,59,.4));filter:var(--hovfil,none)">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.2-.7l.5-.6c.1-.2.1-.3 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.5 3.9 2.6 1.1 2.6.7 3.1.7.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2l-.4-.2z"></path></svg>
+        Place order on WhatsApp
+      </button>
+      <p style="margin:0;font-size:12px;line-height:1.5;text-align:center;color:rgba(246,237,221,.5)">Opens WhatsApp with your order pre-filled &mdash; just hit send. We&rsquo;ll reply with payment details, and your order is confirmed once payment is done.</p>
+    </div>
+  </sc-if>
+</aside>
+<div style="position:fixed;left:50%;bottom:30px;z-index:130;transform:translate(-50%,{{ toastY }});opacity:{{ toastOp }};transition:all .4s cubic-bezier(.32,.72,.24,1);pointer-events:none;background:{{ toastBg }};color:{{ toastFg }};padding:14px 26px;border-radius:999px;font-size:14px;font-weight:600;box-shadow:0 16px 40px rgba(0,0,0,.45);max-width:88vw;text-align:center">{{ toastMsg }}</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;480px&quot;,&quot;height&quot;:&quot;800px&quot;},&quot;whatsapp&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;919876543210&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Ordering&quot;}}">
+class Component extends DCLogic {
+  state = { open: false, view: 'cart', items: [], form: { name: '', phone: '', address: '', landmark: '', pincode: '', state: '' }, toast: null };
+  componentDidMount() {
+    try { this.setState({ items: JSON.parse(localStorage.getItem('bnb-cart-v1') || '[]') }); } catch (e) {}
+    this._onAdd = e => this.add(e.detail);
+    this._onOpen = () => this.setState({ open: true, view: 'cart' });
+    this._esc = e => { if (e.key === 'Escape' && this.state.open) this.setState({ open: false }); };
+    window.addEventListener('bnb:cart:add', this._onAdd);
+    window.addEventListener('bnb:cart:open', this._onOpen);
+    window.addEventListener('keydown', this._esc);
+    setTimeout(() => this.broadcast(this.state.items), 100);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('bnb:cart:add', this._onAdd);
+    window.removeEventListener('bnb:cart:open', this._onOpen);
+    window.removeEventListener('keydown', this._esc);
+    clearTimeout(this._tt);
+  }
+  broadcast(items) {
+    window.dispatchEvent(new CustomEvent('bnb:cart:changed', { detail: { count: items.reduce((a, i) => a + i.qty, 0) } }));
+  }
+  persist(items) {
+    localStorage.setItem('bnb-cart-v1', JSON.stringify(items));
+    this.broadcast(items);
+  }
+  add(p) {
+    const items = this.state.items.map(i => ({ ...i }));
+    const key = p.slug + '|' + p.size;
+    const ex = items.find(i => i.key === key);
+    if (ex) ex.qty += 1; else items.push({ key, slug: p.slug, name: p.name, size: p.size, unit: p.unit, qty: 1 });
+    this.setState({ items }); this.persist(items);
+    this.showToast(p.name + ' (' + p.size + ') added to cart', true);
+  }
+  setQty(key, q) {
+    const items = this.state.items.map(i => i.key === key ? { ...i, qty: q } : i).filter(i => i.qty > 0);
+    const next = { items };
+    if (!items.length && this.state.view === 'checkout') next.view = 'cart';
+    this.setState(next); this.persist(items);
+  }
+  setForm(k, v) { this.setState(s => ({ form: { ...s.form, [k]: v } })); }
+  showToast(msg, ok) {
+    clearTimeout(this._tt);
+    this.setState({ toast: { msg, ok } });
+    this._tt = setTimeout(() => this.setState({ toast: null }), 3200);
+  }
+  placeOrder() {
+    const f = this.state.form, items = this.state.items;
+    const digits = f.phone.replace(/\D/g, '');
+    if (f.name.trim().length < 2) return this.showToast('Please enter your full name', false);
+    if (digits.length < 10) return this.showToast('Please enter a valid 10-digit phone number', false);
+    if (f.address.trim().length < 8) return this.showToast('Please enter your complete address', false);
+    if (!/^\d{6}$/.test(f.pincode.trim())) return this.showToast('Please enter a valid 6-digit pincode', false);
+    if (f.state.trim().length < 2) return this.showToast('Please enter your state', false);
+    const subtotal = items.reduce((a, i) => a + i.unit * i.qty, 0);
+    const lines = items.map((it, i) => (i + 1) + '. ' + it.name + ' (' + it.size + ') x ' + it.qty + ' \u2014 \u20B9' + it.unit * it.qty);
+    const msg = '*Bay n\u2019 Basil \u2014 New Order*\n\n' + lines.join('\n') + '\n\n*Total: \u20B9' + subtotal + '*\n\n*Deliver to*\nName: ' + f.name.trim() + '\nPhone: ' + f.phone.trim() + '\nAddress: ' + f.address.trim() + '\nLandmark: ' + (f.landmark.trim() || '\u2014') + '\nPincode: ' + f.pincode.trim() + '\nState: ' + f.state.trim();
+    const num = String(this.props.whatsapp ?? '919876543210').replace(/\D/g, '');
+    const w = window.open('https://wa.me/' + num + '?text=' + encodeURIComponent(msg), '_blank');
+    if (w) {
+      this.setState({ items: [], view: 'cart', open: false }); this.persist([]);
+      this.showToast('Order sent to WhatsApp \u2014 hit send; we\u2019ll reply with payment details to confirm', true);
+    } else {
+      this.showToast('Couldn\u2019t open WhatsApp \u2014 please allow pop-ups and try again', false);
+    }
+  }
+  renderVals() {
+    const { open, view, items, form, toast } = this.state;
+    const subtotal = items.reduce((a, i) => a + i.unit * i.qty, 0);
+    const count = items.reduce((a, i) => a + i.qty, 0);
+    return {
+      ovOpacity: open ? 1 : 0, ovEvents: open ? 'auto' : 'none', drawerX: open ? '0%' : '105%',
+      title: view === 'checkout' ? 'Delivery details' : count ? 'Your cart (' + count + ')' : 'Your cart',
+      isCart: view === 'cart', isCheckout: view === 'checkout',
+      isEmpty: !items.length, hasItems: !!items.length,
+      close: () => this.setState({ open: false }),
+      backToCart: () => this.setState({ view: 'cart' }),
+      toCheckout: () => this.setState({ view: 'checkout' }),
+      items: items.map(it => ({ ...it, line: it.unit * it.qty,
+        inc: () => this.setQty(it.key, it.qty + 1),
+        dec: () => this.setQty(it.key, it.qty - 1),
+        remove: () => this.setQty(it.key, 0) })),
+      subtotal,
+      fName: form.name, fPhone: form.phone, fAddress: form.address, fLandmark: form.landmark, fPincode: form.pincode, fState: form.state,
+      setName: e => this.setForm('name', e.target.value),
+      setPhone: e => this.setForm('phone', e.target.value),
+      setAddress: e => this.setForm('address', e.target.value),
+      setLandmark: e => this.setForm('landmark', e.target.value),
+      setPincode: e => this.setForm('pincode', e.target.value),
+      setStateField: e => this.setForm('state', e.target.value),
+      placeOrder: () => this.placeOrder(),
+      toastMsg: toast ? toast.msg : '', toastOp: toast ? 1 : 0, toastY: toast ? '0px' : '20px',
+      toastBg: toast && !toast.ok ? '#C03A2B' : 'var(--accent,#F2A93B)',
+      toastFg: toast && !toast.ok ? '#FFF1EC' : 'var(--accentInk,#2A1205)'
+    };
+  }
+}
+</script>
+</body>
+</html>
