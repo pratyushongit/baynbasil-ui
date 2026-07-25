@@ -36,8 +36,13 @@ export const site = {
     "baynbasil",
   ],
 
-  /** WhatsApp number for order checkout (digits only, with country code). */
-  whatsappNumber: "919876543210",
+  /**
+   * WhatsApp number for order checkout (digits only, with country code).
+   * Set via the NEXT_PUBLIC_WHATSAPP_NUMBER env var so the real number stays
+   * out of source control — see .env.example. (It's still present in the built
+   * client bundle, which is unavoidable for a browser-opened wa.me link.)
+   */
+  whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "",
 
   /** Primary navigation. Anchor links (/#story) scroll on the landing page. */
   nav: [

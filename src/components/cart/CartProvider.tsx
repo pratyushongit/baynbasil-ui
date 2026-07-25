@@ -165,6 +165,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         `Pincode: ${form.pincode.trim()}\n` +
         `State: ${form.state.trim()}`;
       const num = site.whatsappNumber.replace(/\D/g, "");
+      if (!num) {
+        return showToast(
+          "Ordering isn’t available right now — please try again later",
+          false,
+        );
+      }
       const w = window.open(
         `https://wa.me/${num}?text=${encodeURIComponent(msg)}`,
         "_blank",
