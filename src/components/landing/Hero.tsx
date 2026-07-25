@@ -234,7 +234,7 @@ export default function Hero() {
             }}
           >
             <Image
-              src="/logo-mark.png"
+              src="/brand-logo.png"
               alt={`${site.brand} logo`}
               width={62}
               height={62}

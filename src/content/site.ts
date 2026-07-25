@@ -16,7 +16,7 @@ export const site = {
   url: "https://www.baynbasil.com",
 
   /** Short tagline (title suffix / OG). */
-  tagline: "Stone-ground Indian spices",
+  tagline: "Authentic Indian Spices",
 
   /** One-line description for SEO (meta description, OG, structured data). */
   description:

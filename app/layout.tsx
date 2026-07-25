@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
     default: `${site.brand} — ${site.tagline}`,
-    template: `%s | ${site.brand}`,
+    template: `%s — ${site.brand}`,
   },
   description: site.description,
   applicationName: site.brand,
@@ -53,13 +53,13 @@ export const metadata: Metadata = {
     description: site.description,
     url: site.url,
     locale: "en_IN",
-    images: [{ url: "/logo.png", width: 500, height: 500, alt: site.brand }],
+    images: [{ url: "/og-image.png", width: 500, height: 500, alt: site.brand }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.brand} — ${site.tagline}`,
     description: site.description,
-    images: ["/logo.png"],
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -80,8 +80,8 @@ const jsonLd = {
   name: site.brand,
   description: site.description,
   url: site.url,
-  logo: `${site.url}/logo.png`,
-  image: `${site.url}/logo.png`,
+  logo: `${site.url}/brand-logo.png`,
+  image: `${site.url}/og-image.png`,
   email: site.contact.email,
   telephone: site.contact.phone,
   address: {
