@@ -1,4 +1,4 @@
-# Bay 'n Basil - Pure Flavour. Modern Craft.
+# Bay'n Basil - Pure Flavour. Modern Craft.
 
 Artisanal spice blends website built with modern web technologies.
 
