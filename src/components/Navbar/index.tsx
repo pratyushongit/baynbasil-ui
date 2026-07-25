@@ -1,87 +1,194 @@
 "use client";
 
-import { useState } from "react";
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import Image from "next/image";
-import logo from "@/assets/logo.png";
-import styles from "./styles.module.css";
-import { content } from "@/constants/content";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { site } from "@/content/site";
+import { useCart } from "@/components/cart/CartProvider";
 
-const Navbar = () => {
-  const [hidden, setHidden] = useState(false);
-  const { scrollY } = useScroll();
+const GLOOCK = "var(--font-gloock), serif";
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious();
-    if (latest > previous! && latest > 150) {
-      setHidden(true);
-    } else {
-      setHidden(false);
-    }
-  });
+export default function Navbar() {
+  const { count, openCart } = useCart();
+  const [menu, setMenu] = useState(false);
 
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  useEffect(() => {
+    document.body.style.overflow = menu ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menu]);
+
+  const closeMenu = () => setMenu(false);
 
   return (
-    <motion.nav
-      variants={{
-        visible: { y: 0 },
-        hidden: { y: "-100%" },
-      }}
-      animate={hidden ? "hidden" : "visible"}
-      transition={{ duration: 0.35, ease: "easeInOut" }}
-      className={styles.navbar}
-    >
-      <div className={styles.container}>
-        <div className={styles.navContent}>
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className={styles.logoContainer}
-          >
-            <Image
-              src={logo}
-              alt={content.brand.name}
-              className={styles.logo}
-              width={150}
-              height={60}
-              priority
-            />
-          </motion.div>
+    <>
+      <nav
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          right: 0,
+          zIndex: 60,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          gap: 16,
+          padding: "18px clamp(20px,4vw,44px)",
+          background: "color-mix(in srgb, var(--bg) 72%, transparent)",
+          backdropFilter: "blur(14px)",
+          borderBottom: "1px solid rgba(246,237,221,.08)",
+        }}
+      >
+        <Link
+          href="/"
+          aria-label={`${site.brand} — home`}
+          style={{
+            fontFamily: "var(--font-frunchy), Georgia, serif",
+            // Responsive: larger on wider screens, safe on mobile.
+            fontSize: "clamp(32px, 3.2vw, 46px)",
+            letterSpacing: ".01em",
+            lineHeight: 1,
+            whiteSpace: "nowrap",
+          }}
+        >
+          {site.brand}
+        </Link>
 
-          <motion.ul
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className={styles.navList}
-          >
-            {content.navbar.items.map((item, index) => (
-              <motion.li
-                key={item.id}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.1 + index * 0.05 }}
-                className={styles.navItem}
-              >
-                <button
-                  onClick={() => scrollToSection(item.id)}
-                  className={styles.navButton}
-                >
-                  {item.label}
-                </button>
-              </motion.li>
-            ))}
-          </motion.ul>
+        <div
+          data-navlinks
+          style={{
+            display: "flex",
+            gap: 34,
+            fontSize: 14,
+            fontWeight: 500,
+            letterSpacing: ".06em",
+            textTransform: "uppercase",
+            color: "var(--mut)",
+          }}
+        >
+          {site.nav.map((l) => (
+            <Link key={l.href} href={l.href}>
+              {l.label}
+            </Link>
+          ))}
         </div>
-      </div>
-    </motion.nav>
-  );
-};
 
-export default Navbar;
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <button
+            onClick={openCart}
+            style={{
+              fontFamily: "var(--font-albert), sans-serif",
+              fontSize: 13,
+              fontWeight: 600,
+              letterSpacing: ".08em",
+              textTransform: "uppercase",
+              background: "var(--accent)",
+              color: "var(--accentInk)",
+              border: "none",
+              borderRadius: 999,
+              padding: "11px 22px",
+              cursor: "pointer",
+            }}
+          >
+            Cart &middot; {count}
+          </button>
+
+          <button
+            data-burger
+            onClick={() => setMenu((m) => !m)}
+            aria-label="Menu"
+            style={{
+              width: 44,
+              height: 44,
+              background: "transparent",
+              border: "none",
+              color: "var(--cream)",
+              cursor: "pointer",
+              flexDirection: "column",
+              gap: 5,
+              alignItems: "center",
+              justifyContent: "center",
+              padding: 0,
+            }}
+          >
+            <span style={burgerBar} />
+            <span style={burgerBar} />
+            <span style={burgerBar} />
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile menu */}
+      <div
+        aria-label="Mobile menu"
+        style={{
+          position: "fixed",
+          inset: 0,
+          zIndex: 70,
+          background: "var(--bg)",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          gap: 10,
+          padding: "0 36px",
+          transition: "opacity .3s ease",
+          opacity: menu ? 1 : 0,
+          pointerEvents: menu ? "auto" : "none",
+        }}
+      >
+        <button
+          onClick={closeMenu}
+          aria-label="Close menu"
+          style={{
+            position: "absolute",
+            top: 18,
+            right: 20,
+            width: 44,
+            height: 44,
+            borderRadius: "50%",
+            background: "transparent",
+            border: "1px solid rgba(246,237,221,.3)",
+            color: "var(--cream)",
+            fontSize: 16,
+            cursor: "pointer",
+          }}
+        >
+          &#10005;
+        </button>
+
+        {site.nav.map((l) => (
+          <Link
+            key={l.href}
+            href={l.href}
+            onClick={closeMenu}
+            style={{ fontFamily: GLOOCK, fontSize: 42, color: "var(--cream)" }}
+          >
+            {l.label}
+          </Link>
+        ))}
+
+        <Link
+          href="/products"
+          onClick={closeMenu}
+          style={{
+            marginTop: 22,
+            fontSize: 13,
+            fontWeight: 700,
+            letterSpacing: ".1em",
+            textTransform: "uppercase",
+            color: "var(--accent)",
+          }}
+        >
+          Browse all spices &#8594;
+        </Link>
+      </div>
+    </>
+  );
+}
+
+const burgerBar: React.CSSProperties = {
+  width: 18,
+  height: 2,
+  background: "currentColor",
+  display: "block",
+};
