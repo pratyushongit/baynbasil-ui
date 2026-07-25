@@ -113,9 +113,9 @@ export default function ProductsPage() {
 
         {/* Product grid */}
         <main
+          className="product-grid"
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill,minmax(min(100%,250px),1fr))",
             gap: "48px 32px",
             padding: "10px clamp(20px,5vw,64px) 90px",
           }}

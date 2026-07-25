@@ -113,118 +113,121 @@ export default function ProductsCarousel() {
         {featuredProducts.map((p) => (
           <div
             key={p.slug}
-            className="hov-card"
             style={{
               display: "flex",
               flexDirection: "column",
-              width: "min(320px,82vw)",
+              width: "min(300px,80vw)",
               flex: "none",
               scrollSnapAlign: "start",
-              background: "linear-gradient(170deg,var(--panel),var(--panel2))",
-              borderRadius: 20,
-              padding: "10px 10px 18px",
-              boxSizing: "border-box",
-              transition: "box-shadow .3s ease",
             }}
           >
             <div
               style={{
-                aspectRatio: "3 / 4",
-                borderRadius: 12,
+                position: "relative",
+                aspectRatio: "4 / 5",
+                borderRadius: 14,
                 overflow: "hidden",
-                background: "rgba(0,0,0,.28)",
+                background: "rgba(0,0,0,.25)",
               }}
             >
               <ImageSlot
                 src={p.image ? `/images/products/${p.image}` : undefined}
                 placeholder={`pouch shot — ${p.name}`}
-                sizes="(max-width: 768px) 82vw, 320px"
+                sizes="(max-width: 768px) 80vw, 300px"
               />
-            </div>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "baseline",
-                justifyContent: "space-between",
-                gap: 12,
-                marginTop: 18,
-              }}
-            >
-              <h3
-                style={{
-                  margin: 0,
-                  fontFamily: GLOOCK,
-                  fontWeight: 400,
-                  fontSize: 20,
-                  lineHeight: 1.15,
-                }}
-              >
-                {p.name}
-              </h3>
-              <span
-                style={{
-                  fontSize: 12,
-                  fontWeight: 600,
-                  letterSpacing: ".1em",
-                  color: "rgba(246,237,221,.55)",
-                  whiteSpace: "nowrap",
-                }}
-              >
-                {p.weight}
-              </span>
-            </div>
-            <p
-              style={{
-                margin: "8px 0 16px",
-                fontSize: 14,
-                lineHeight: 1.5,
-                color: "rgba(246,237,221,.72)",
-              }}
-            >
-              {p.note}
-            </p>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "space-between",
-                gap: 12,
-                marginTop: "auto",
-              }}
-            >
-              <span
-                style={{
-                  fontFamily: "var(--font-albert), sans-serif",
-                  fontSize: 20,
-                  fontWeight: 700,
-                  letterSpacing: ".01em",
-                  color: "var(--accent)",
-                }}
-              >
-                {formatPrice(p.price)}
-              </span>
               <button
                 onClick={() =>
                   add({ slug: p.slug, name: p.name, size: p.weight, unit: p.price })
                 }
+                aria-label={`Add ${p.name} to cart`}
                 className="hov-fill"
                 style={{
-                  fontFamily: "var(--font-albert), sans-serif",
-                  fontSize: 12.5,
-                  fontWeight: 700,
-                  letterSpacing: ".09em",
-                  textTransform: "uppercase",
-                  background: "transparent",
+                  position: "absolute",
+                  right: 12,
+                  bottom: 12,
+                  width: 42,
+                  height: 42,
+                  borderRadius: "50%",
+                  background: "rgba(30,13,5,.82)",
+                  backdropFilter: "blur(8px)",
+                  border: "1px solid rgba(246,237,221,.25)",
                   color: "var(--cream)",
-                  border: "1px solid rgba(246,237,221,.35)",
-                  borderRadius: 999,
-                  padding: "12px 20px",
+                  fontSize: 20,
+                  lineHeight: 1,
                   cursor: "pointer",
                   transition: "all .25s",
                 }}
               >
-                Add to cart
+                +
               </button>
+            </div>
+
+            <div style={{ marginTop: 16 }}>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "baseline",
+                  justifyContent: "space-between",
+                  gap: 14,
+                }}
+              >
+                <h3
+                  style={{
+                    margin: 0,
+                    fontFamily: GLOOCK,
+                    fontWeight: 400,
+                    fontSize: 20,
+                    lineHeight: 1.15,
+                  }}
+                >
+                  {p.name}
+                </h3>
+                <span
+                  style={{
+                    fontFamily: "var(--font-albert), sans-serif",
+                    fontSize: 20,
+                    fontWeight: 700,
+                    fontVariantNumeric: "tabular-nums",
+                    color: "var(--accent)",
+                    whiteSpace: "nowrap",
+                    flex: "none",
+                  }}
+                >
+                  {formatPrice(p.price)}
+                </span>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "baseline",
+                  justifyContent: "space-between",
+                  gap: 12,
+                  marginTop: 6,
+                }}
+              >
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: 13.5,
+                    lineHeight: 1.5,
+                    color: "rgba(246,237,221,.6)",
+                  }}
+                >
+                  {p.note}
+                </p>
+                <span
+                  style={{
+                    flex: "none",
+                    fontSize: 12,
+                    fontWeight: 600,
+                    letterSpacing: ".06em",
+                    color: "rgba(246,237,221,.5)",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {p.weight}
+                </span>
+              </div>
             </div>
           </div>
         ))}
