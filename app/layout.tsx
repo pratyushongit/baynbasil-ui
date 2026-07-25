@@ -53,13 +53,13 @@ export const metadata: Metadata = {
     description: site.description,
     url: site.url,
     locale: "en_IN",
-    images: [{ url: "/og-image.png", width: 500, height: 500, alt: site.brand }],
+    images: [{ url: "/og-image.jpg", width: 667, height: 667, alt: site.brand }],
   },
   twitter: {
     card: "summary_large_image",
     title: `${site.brand} — ${site.tagline}`,
     description: site.description,
-    images: ["/og-image.png"],
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
@@ -81,7 +81,7 @@ const jsonLd = {
   description: site.description,
   url: site.url,
   logo: `${site.url}/brand-logo.png`,
-  image: `${site.url}/og-image.png`,
+  image: `${site.url}/og-image.jpg`,
   email: site.contact.email,
   telephone: site.contact.phone,
   address: {
