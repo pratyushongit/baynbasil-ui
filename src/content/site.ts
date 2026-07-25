@@ -32,6 +32,8 @@ export const site = {
     "red chilli powder",
     "turmeric",
     "Bay n Basil",
+    "BaynBasil",
+    "baynbasil",
   ],
 
   /** WhatsApp number for order checkout (digits only, with country code). */

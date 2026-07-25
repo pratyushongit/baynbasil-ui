@@ -155,7 +155,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         (it, i) => `${i + 1}. ${it.name} (${it.size}) x ${it.qty} — ₹${it.unit * it.qty}`,
       );
       const msg =
-        `*Bay n’ Basil — New Order*\n\n` +
+        `*Bay’n Basil — New Order*\n\n` +
         lines.join("\n") +
         `\n\n*Total: ₹${subtotal}*\n\n*Deliver to*\n` +
         `Name: ${form.name.trim()}\n` +
