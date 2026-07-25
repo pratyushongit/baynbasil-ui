@@ -63,7 +63,11 @@ export default function Navbar() {
             ) : (
               <span
                 key={i}
-                style={{ display: "inline-block", transform: "translateY(0.06em)", whiteSpace: "pre" }}
+                style={{
+                  display: "inline-block",
+                  transform: "translateY(0.09em)",
+                  whiteSpace: "pre",
+                }}
               >
                 {part}
               </span>
