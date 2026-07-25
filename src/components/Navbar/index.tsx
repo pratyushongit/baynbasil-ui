@@ -51,7 +51,28 @@ export default function Navbar() {
             whiteSpace: "nowrap",
           }}
         >
-          {site.brand}
+          {site.brand.split(/(B)/).map((part, i) =>
+            part === "B" ? (
+              <span
+                key={i}
+                style={{
+                  fontFamily: "var(--font-tan-pearl), Georgia, serif",
+                  fontSize: "0.65em",
+                  display: "inline-block",
+                  transform: "translateY(0.14em)",
+                }}
+              >
+                B
+              </span>
+            ) : (
+              <span
+                key={i}
+                style={{ display: "inline-block", transform: "translateY(0.06em)", whiteSpace: "pre" }}
+              >
+                {part}
+              </span>
+            ),
+          )}
         </Link>
 
         <div

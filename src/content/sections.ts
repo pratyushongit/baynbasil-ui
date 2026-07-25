@@ -34,7 +34,7 @@ export const sections = {
       { value: 0, suffix: "", label: "Additives, ever" },
     ],
     imagePlaceholder: "story image — hands grinding spices / farm",
-    imageFile: "story.jpg",
+    imageFile: "story.png",
   },
 
   /** Landing products (bestsellers carousel) section. */

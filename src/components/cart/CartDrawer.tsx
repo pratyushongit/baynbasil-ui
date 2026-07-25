@@ -57,7 +57,7 @@ export default function CartDrawer() {
     setForm((f) => ({ ...f, [k]: e.target.value }));
 
   const isCheckout = view === "checkout";
-  const title = isCheckout ? "Delivery details" : count ? `Your cart (${count})` : "Your cart";
+  const title = isCheckout ? "Delivery details" : "Your cart";
 
   return (
     <div style={{ fontFamily: "var(--font-albert), sans-serif" }}>
@@ -117,7 +117,21 @@ export default function CartDrawer() {
                 &#8592;
               </button>
             )}
-            <span style={{ fontFamily: GLOOCK, fontSize: 24 }}>{title}</span>
+            <span style={{ fontFamily: GLOOCK, fontSize: 24 }}>
+              {title}
+              {!isCheckout && count ? (
+                <span
+                  style={{
+                    fontFamily: "var(--font-albert), sans-serif",
+                    fontWeight: 700,
+                    fontSize: 22,
+                    marginLeft: 8,
+                  }}
+                >
+                  ({count})
+                </span>
+              ) : null}
+            </span>
           </div>
           <button onClick={close} aria-label="Close" className="hov-ghost" style={circleBtn}>
             &#10005;
@@ -191,8 +205,9 @@ export default function CartDrawer() {
                     style={{
                       width: 60,
                       textAlign: "right",
-                      fontFamily: GLOOCK,
-                      fontSize: 17,
+                      fontFamily: "var(--font-albert), sans-serif",
+                      fontWeight: 700,
+                      fontSize: 15,
                       color: "var(--accent)",
                     }}
                   >
@@ -231,7 +246,14 @@ export default function CartDrawer() {
                   style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}
                 >
                   <span style={{ fontSize: 14, color: "var(--mut)" }}>Subtotal</span>
-                  <span style={{ fontFamily: GLOOCK, fontSize: 26, color: "var(--accent)" }}>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-albert), sans-serif",
+                      fontWeight: 700,
+                      fontSize: 22,
+                      color: "var(--accent)",
+                    }}
+                  >
                     ₹{subtotal}
                   </span>
                 </div>
@@ -300,7 +322,14 @@ export default function CartDrawer() {
                   }}
                 >
                   <span style={{ fontWeight: 600, fontSize: 14 }}>Total</span>
-                  <span style={{ fontFamily: GLOOCK, fontSize: 20, color: "var(--accent)" }}>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-albert), sans-serif",
+                      fontWeight: 700,
+                      fontSize: 18,
+                      color: "var(--accent)",
+                    }}
+                  >
                     ₹{subtotal}
                   </span>
                 </div>

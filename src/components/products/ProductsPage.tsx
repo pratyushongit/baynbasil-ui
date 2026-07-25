@@ -166,9 +166,8 @@ export default function ProductsPage() {
                     margin: 0,
                     fontFamily: GLOOCK,
                     fontWeight: 400,
-                    fontSize: 22,
-                    lineHeight: 1.1,
-                    minHeight: "2.2em",
+                    fontSize: 19,
+                    lineHeight: 1.15,
                     cursor: "pointer",
                   }}
                 >
@@ -207,7 +206,15 @@ export default function ProductsPage() {
                   marginTop: "auto",
                 }}
               >
-                <span style={{ fontFamily: GLOOCK, fontSize: 21, color: "var(--accent)" }}>
+                <span
+                  style={{
+                    fontFamily: "var(--font-albert), sans-serif",
+                    fontSize: 18,
+                    fontWeight: 700,
+                    letterSpacing: ".01em",
+                    color: "var(--accent)",
+                  }}
+                >
                   {formatPrice(p.price)}
                 </span>
                 <div style={{ display: "flex", gap: 8 }}>
@@ -369,8 +376,10 @@ export default function ProductsPage() {
                   </h2>
                   <span
                     style={{
-                      fontFamily: GLOOCK,
-                      fontSize: 26,
+                      fontFamily: "var(--font-albert), sans-serif",
+                      fontSize: 23,
+                      fontWeight: 700,
+                      letterSpacing: ".01em",
                       color: "var(--accent)",
                       whiteSpace: "nowrap",
                     }}

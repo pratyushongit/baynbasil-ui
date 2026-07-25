@@ -155,9 +155,8 @@ export default function ProductsCarousel() {
                   margin: 0,
                   fontFamily: GLOOCK,
                   fontWeight: 400,
-                  fontSize: 25,
-                  lineHeight: 1.1,
-                  minHeight: "2.2em",
+                  fontSize: 20,
+                  lineHeight: 1.15,
                 }}
               >
                 {p.name}
@@ -180,7 +179,6 @@ export default function ProductsCarousel() {
                 fontSize: 14,
                 lineHeight: 1.5,
                 color: "rgba(246,237,221,.72)",
-                minHeight: 42,
               }}
             >
               {p.note}
@@ -194,7 +192,15 @@ export default function ProductsCarousel() {
                 marginTop: "auto",
               }}
             >
-              <span style={{ fontFamily: GLOOCK, fontSize: 23, color: "var(--accent)" }}>
+              <span
+                style={{
+                  fontFamily: "var(--font-albert), sans-serif",
+                  fontSize: 20,
+                  fontWeight: 700,
+                  letterSpacing: ".01em",
+                  color: "var(--accent)",
+                }}
+              >
                 {formatPrice(p.price)}
               </span>
               <button

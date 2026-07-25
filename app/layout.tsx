@@ -33,6 +33,17 @@ const frunchySage = localFont({
   adjustFontFallback: "Times New Roman",
 });
 
+// Decorative capital used for the two "B"s in the wordmark, matching the
+// pouch label logo. Self-hosted and preloaded like the brand typeface.
+const tanPearl = localFont({
+  src: "../src/fonts/TAN-Pearl-Regular.ttf",
+  variable: "--font-tan-pearl",
+  display: "swap",
+  weight: "400",
+  preload: true,
+  adjustFontFallback: "Times New Roman",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
@@ -99,7 +110,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${gloock.variable} ${albertSans.variable} ${frunchySage.variable}`}
+      className={`${gloock.variable} ${albertSans.variable} ${frunchySage.variable} ${tanPearl.variable}`}
     >
       <body>
         {/* Pre-paint: hide scroll-animated elements before first paint so
