@@ -115,19 +115,21 @@ export default function ProductsCarousel() {
             key={p.slug}
             className="hov-card"
             style={{
+              display: "flex",
+              flexDirection: "column",
               width: "min(320px,82vw)",
               flex: "none",
               scrollSnapAlign: "start",
               background: "linear-gradient(170deg,var(--panel),var(--panel2))",
               borderRadius: 20,
-              padding: "16px 16px 22px",
+              padding: "10px 10px 18px",
               boxSizing: "border-box",
               transition: "box-shadow .3s ease",
             }}
           >
             <div
               style={{
-                height: 230,
+                aspectRatio: "3 / 4",
                 borderRadius: 12,
                 overflow: "hidden",
                 background: "rgba(0,0,0,.28)",
@@ -155,6 +157,7 @@ export default function ProductsCarousel() {
                   fontWeight: 400,
                   fontSize: 25,
                   lineHeight: 1.1,
+                  minHeight: "2.2em",
                 }}
               >
                 {p.name}
@@ -188,6 +191,7 @@ export default function ProductsCarousel() {
                 alignItems: "center",
                 justifyContent: "space-between",
                 gap: 12,
+                marginTop: "auto",
               }}
             >
               <span style={{ fontFamily: GLOOCK, fontSize: 23, color: "var(--accent)" }}>

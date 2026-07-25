@@ -1,5 +1,5 @@
 /**
- * The product catalog — the single source of truth for every spice.
+ * The product catalog — the single source of truth for every masala blend.
  *
  * To ADD a product: append an object below.
  * To REMOVE one: delete its object.
@@ -12,16 +12,19 @@
  * Images: put a file at `public/images/products/<image>` and set `image` to
  * its filename. If the file is missing, a faithful placeholder is shown
  * instead, so the site looks complete before real photos exist.
+ *
+ * NOTE: prices and pack sizes below are PLACEHOLDERS — edit the `price` and
+ * `weight` fields (and `sizeOptions`) to your real numbers.
  */
 
-export type Category = "Chillies" | "Ground" | "Whole" | "Blends";
+export type Category = "Chicken" | "Mutton" | "Fish" | "Veg" | "Rice";
 
 export interface Product {
   /** Stable id — also the persistence key and image lookup. */
   slug: string;
   name: string;
   category: Category;
-  /** Default pouch size shown on the card, e.g. "500g". */
+  /** Default pouch size shown on the card, e.g. "100g". */
   weight: string;
   /** Price in ₹ (number so it can be formatted/summed anywhere). */
   price: number;
@@ -41,189 +44,169 @@ export interface Product {
   featured?: boolean;
 }
 
-/** Size options offered in the quick-view drawer. */
-export const sizeOptions = ["100g", "250g", "500g"] as const;
+/** Size options offered in the quick-view drawer. Packs ship in one 185g size
+ *  (as printed on the pouch). Add more sizes here if you sell them. */
+export const sizeOptions = ["185g"] as const;
 
-/** Default selected size index in the quick-view drawer (250g). */
-export const defaultSizeIndex = 1;
+/** Default selected size index in the quick-view drawer. */
+export const defaultSizeIndex = 0;
 
 export const products: Product[] = [
   {
-    slug: "red-chilli",
-    name: "Red Chilli",
-    category: "Chillies",
-    weight: "500g",
-    price: 249,
-    note: "Sun-dried Guntur pods. Proper heat.",
+    slug: "andhra-chicken-fry",
+    name: "Andhra Chicken Fry",
+    category: "Chicken",
+    weight: "185g",
+    price: 169,
+    note: "Fiery Guntur-chilli dry fry.",
     heat: "Hot",
-    origin: "Guntur, AP",
-    desc: "Whole Guntur Sannam pods, sun-dried on farm and stone-ground with the seeds in. Bold, clean heat with a smoky finish — the workhorse chilli of every Indian kitchen.",
-    ingredients: "100% red chilli. Nothing else.",
-    use: "Curries, tadkas, pickles, chilli oil.",
-    image: "red-chilli.jpg",
-    featured: true,
-  },
-  {
-    slug: "kashmiri",
-    name: "Kashmiri Chilli",
-    category: "Chillies",
-    weight: "250g",
-    price: 329,
-    note: "All colour, gentle warmth.",
-    heat: "Mild",
-    origin: "Byadgi, KA",
-    desc: "Deep crimson colour with barely-there heat. This is the chilli that makes butter chicken glow and rogan josh blush without setting anyone on fire.",
-    ingredients: "100% Kashmiri-style byadgi chilli.",
-    use: "Butter chicken, rogan josh, tandoori marinades.",
-    image: "kashmiri.jpg",
-    featured: true,
-  },
-  {
-    slug: "turmeric",
-    name: "Turmeric",
-    category: "Ground",
-    weight: "500g",
-    price: 199,
-    note: "Lakadong-grade, 5%+ curcumin.",
-    heat: "None",
-    origin: "Lakadong, ML",
-    desc: "High-curcumin roots from Meghalaya, boiled, dried and cold-ground. Earthy, bitter-sweet, and so pigmented a pinch does the work of a spoonful.",
-    ingredients: "100% turmeric root. No fillers, no colour.",
-    use: "Dals, haldi doodh, marinades, rice.",
-    image: "turmeric.jpg",
-    featured: true,
-  },
-  {
-    slug: "garam",
-    name: "Garam Masala",
-    category: "Blends",
-    weight: "200g",
-    price: 299,
-    note: "Nine spices, roasted separately.",
-    heat: "Warm",
-    origin: "House blend",
-    desc: "Nine whole spices — each roasted separately to its own moment, then ground together once. Finish a dish with it and the kitchen changes weather.",
+    origin: "Andhra",
+    desc: "The dry, fiery kick of a Rayalaseema chicken fry — Guntur chilli, roasted coriander and black pepper ground into a masala that clings to every piece. Cook it down till the oil separates.",
     ingredients:
-      "Coriander, cumin, black pepper, cardamom, cinnamon, clove, bay leaf, nutmeg, star anise.",
-    use: "Finishing curries, biryanis, kebabs.",
-    image: "garam.jpg",
+      "Red chilli, coriander, black pepper, cumin, garlic, curry leaf, fenugreek, turmeric, salt.",
+    use: "Andhra-style dry chicken fry.",
+    image: "andhra-chicken-fry.png",
     featured: true,
   },
   {
-    slug: "coriander",
-    name: "Coriander",
-    category: "Ground",
-    weight: "500g",
-    price: 179,
-    note: "Cold-ground, citrus-bright.",
-    heat: "None",
-    origin: "Kota, RJ",
-    desc: "Eagle-grade seeds ground cold and slow so the lemony top notes survive. Sweet, floral, and nothing like the flat dust in supermarket boxes.",
-    ingredients: "100% coriander seed.",
-    use: "Base masalas, chutneys, rasam.",
-    image: "coriander.jpg",
-    featured: true,
-  },
-  {
-    slug: "cumin",
-    name: "Cumin, Whole",
-    category: "Whole",
-    weight: "250g",
-    price: 219,
-    note: "Smoky, unbroken seeds.",
-    heat: "None",
-    origin: "Unjha, GJ",
-    desc: "Plump, unbroken seeds with a deep smoky-sweet aroma. Bloom them in hot ghee and the whole house knows dinner is serious.",
-    ingredients: "100% cumin seed.",
-    use: "Tadkas, jeera rice, raitas, spice blends.",
-    image: "cumin.jpg",
-    featured: true,
-  },
-  {
-    slug: "pepper",
-    name: "Black Pepper",
-    category: "Whole",
-    weight: "250g",
-    price: 389,
-    note: "Malabar bold, sharp and floral.",
-    heat: "Hot",
-    origin: "Wayanad, KL",
-    desc: "Bold-grade Malabar corns picked ripe and sun-dried. Sharp heat up front, pine and citrus behind it. Grind fresh, always.",
-    ingredients: "100% black peppercorn.",
-    use: "Pepper chicken, rasam, everything.",
-    image: "pepper.jpg",
-  },
-  {
-    slug: "mustard",
-    name: "Mustard Seeds",
-    category: "Whole",
-    weight: "250g",
-    price: 149,
-    note: "Small, pungent, pop-ready.",
-    heat: "Pungent",
-    origin: "Jodhpur, RJ",
-    desc: "Small black seeds that pop clean and fast. Nutty once bloomed, fiery when crushed — the opening note of every South Indian tadka.",
-    ingredients: "100% black mustard seed.",
-    use: "Tadkas, pickles, kadhi.",
-    image: "mustard.jpg",
-  },
-  {
-    slug: "methi",
-    name: "Fenugreek",
-    category: "Whole",
-    weight: "200g",
-    price: 139,
-    note: "Bitter-sweet, maple-deep.",
-    heat: "None",
-    origin: "Nagaur, RJ",
-    desc: "Golden seeds with that unmistakable maple-bitter depth. A little goes far; toasted right, it rounds out pickles and sambar like nothing else.",
-    ingredients: "100% fenugreek seed.",
-    use: "Pickles, sambar powder, methi dal.",
-    image: "methi.jpg",
-  },
-  {
-    slug: "sambar",
-    name: "Sambar Masala",
-    category: "Blends",
-    weight: "200g",
-    price: 269,
-    note: "Roasted dal-and-chilli classic.",
+    slug: "bengali-chicken-kosha",
+    name: "Bengali Chicken Kosha",
+    category: "Chicken",
+    weight: "185g",
+    price: 169,
+    note: "Slow-bhuna kosha mangsho depth.",
     heat: "Medium",
-    origin: "House blend",
-    desc: "Roasted chana dal, coriander, byadgi chilli and fenugreek in the classic Kumbakonam proportion. One spoon, honest sambar.",
+    origin: "Bengal",
+    desc: "Everything a proper kosha needs — warm garam notes, mustard and a slow caramel depth. Bhuno it low and long and the gravy turns dark, glossy and rich.",
     ingredients:
-      "Coriander, chana dal, byadgi chilli, fenugreek, cumin, black pepper, turmeric, curry leaf, hing.",
-    use: "Sambar, kootu, roasted vegetables.",
-    image: "sambar.jpg",
+      "Coriander, cumin, red chilli, cardamom, cinnamon, clove, bay leaf, mace, nutmeg, mustard, turmeric.",
+    use: "Bengali chicken (or mutton) kosha.",
+    image: "bengali-chicken-kosha.png",
+    featured: true,
   },
   {
-    slug: "chaat",
-    name: "Chaat Masala",
-    category: "Blends",
-    weight: "150g",
-    price: 229,
-    note: "Tangy, sulphurous, addictive.",
+    slug: "bhatti-masala-chicken",
+    name: "Bhatti Masala Chicken",
+    category: "Chicken",
+    weight: "185g",
+    price: 159,
+    note: "Smoky tandoor-grill rub.",
+    heat: "Medium",
+    origin: "Punjab",
+    desc: "A dry rub built for the bhatti — smoky, tangy and deeply savoury. Marinate, grill or pan-sear, and finish with a squeeze of lime.",
+    ingredients:
+      "Red chilli, coriander, cumin, black pepper, dried mango, black salt, ginger, garlic, kasuri methi.",
+    use: "Grilled / tandoori-style chicken.",
+    image: "bhatti-masala-chicken.png",
+  },
+  {
+    slug: "bihari-chicken-curry",
+    name: "Bihari Chicken Curry",
+    category: "Chicken",
+    weight: "185g",
+    price: 159,
+    note: "Homely mustard-oil curry base.",
+    heat: "Medium",
+    origin: "Bihar",
+    desc: "The everyday chicken curry of a Bihari kitchen — mustard-oil forward, gently spiced, honest. One packet and a handful of onions is dinner.",
+    ingredients:
+      "Coriander, cumin, red chilli, turmeric, black pepper, bay leaf, clove, cardamom, cinnamon.",
+    use: "Home-style Bihari chicken curry.",
+    image: "bihari-chicken-curry.png",
+  },
+  {
+    slug: "bihars-champaran",
+    name: "Bihar's Champaran",
+    category: "Mutton",
+    weight: "185g",
+    price: 189,
+    note: "Ahuna handi mutton, sealed & slow.",
+    heat: "Medium",
+    origin: "Champaran, Bihar",
+    desc: "The legendary Champaran ahuna — mutton sealed in a clay handi and cooked in its own steam. This blend brings the smoky garlic-and-chilli soul of it to any pot.",
+    ingredients:
+      "Red chilli, garlic, coriander, cumin, black pepper, cardamom, clove, cinnamon, bay leaf, mustard.",
+    use: "Champaran-style handi mutton.",
+    image: "bihars-champaran.png",
+    featured: true,
+  },
+  {
+    slug: "mutton-dehati",
+    name: "Mutton Dehati",
+    category: "Mutton",
+    weight: "185g",
+    price: 189,
+    note: "Rustic, wood-fire village heat.",
+    heat: "Hot",
+    origin: "House blend",
+    desc: "Rough-ground, rustic and unapologetically spicy — the mutton curry cooked over a wood fire in the village. Big on whole spice, big on heat.",
+    ingredients:
+      "Red chilli, coriander, cumin, black pepper, cardamom, clove, cinnamon, bay leaf, nutmeg, mace, turmeric.",
+    use: "Rustic dehati mutton curry.",
+    image: "mutton-dehati.png",
+    featured: true,
+  },
+  {
+    slug: "fish-bhuna",
+    name: "Fish Bhuna",
+    category: "Fish",
+    weight: "185g",
+    price: 149,
+    note: "Mustard-bright Bengali bhuna.",
+    heat: "Medium",
+    origin: "Bengal",
+    desc: "A bhuna built for fish — mustard, nigella and a whisper of chilli that clings to the fillet without overpowering it. Quick, sharp, coastal.",
+    ingredients:
+      "Mustard, coriander, red chilli, turmeric, cumin, nigella, fenugreek, black pepper.",
+    use: "Bengali-style fish bhuna.",
+    image: "fish-bhuna.png",
+    featured: true,
+  },
+  {
+    slug: "aloo-chatpata",
+    name: "Aloo Chatpata",
+    category: "Veg",
+    weight: "185g",
+    price: 129,
+    note: "Tangy, chatpata potato masala.",
     heat: "Tangy",
     origin: "House blend",
-    desc: "Kala namak, amchur and roasted cumin doing their loud, tangy thing. Dust it on fruit, fries, salads — anything that needs waking up.",
+    desc: "Loud, tangy and moreish — amchur and roasted cumin doing their chatpata thing over crisp potatoes. Toss it on aloo, chaat, fries, anything.",
     ingredients:
-      "Amchur, kala namak, roasted cumin, coriander, black pepper, mint, hing, chilli.",
-    use: "Fruit, chaats, lemonade rims, fries.",
-    image: "chaat.jpg",
+      "Amchur, cumin, red chilli, coriander, black salt, black pepper, dry ginger, hing.",
+    use: "Chatpata aloo, jeera aloo, fries.",
+    image: "aloo-chatpata.png",
   },
   {
-    slug: "cardamom",
-    name: "Green Cardamom",
-    category: "Whole",
-    weight: "100g",
-    price: 449,
-    note: "Fat 8mm pods, eucalyptus-sweet.",
-    heat: "None",
-    origin: "Idukki, KL",
-    desc: "Fat, bright-green 8mm pods from high-range Idukki estates. Floral, eucalyptus-sweet, and strong enough to perfume a whole pot of chai with three pods.",
-    ingredients: "100% green cardamom.",
-    use: "Chai, kheer, biryani, baking.",
-    image: "cardamom.jpg",
+    slug: "mushroom-fry",
+    name: "Mushroom Fry",
+    category: "Veg",
+    weight: "185g",
+    price: 139,
+    note: "Peppery South-Indian fry masala.",
+    heat: "Medium",
+    origin: "South India",
+    desc: "A peppery, curry-leaf-heavy fry masala that turns mushrooms into a proper dry starter. Works just as well on paneer, gobi or baby corn.",
+    ingredients:
+      "Black pepper, coriander, red chilli, cumin, fennel, curry leaf, garlic, turmeric.",
+    use: "Mushroom / paneer dry fry.",
+    image: "mushroom-fry.png",
+  },
+  {
+    slug: "bengali-biryani",
+    name: "Bengali Biryani",
+    category: "Rice",
+    weight: "185g",
+    price: 199,
+    note: "Kolkata biryani, aloo and all.",
+    heat: "Mild",
+    origin: "Kolkata",
+    desc: "The gentle, fragrant Kolkata biryani — rosewater-soft, subtly sweet, built around that famous aloo. Warm whole spice, no harsh heat.",
+    ingredients:
+      "Cardamom, cinnamon, clove, mace, nutmeg, bay leaf, black pepper, star anise, kewra, rose.",
+    use: "Kolkata-style chicken / mutton biryani.",
+    image: "bengali-biryani.png",
+    featured: true,
   },
 ];
 

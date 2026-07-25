@@ -41,7 +41,7 @@ export const sections = {
   productsCarousel: {
     eyebrow: "The collection",
     heading: { line1: "Bestsellers,", line2: "ground this week." },
-    browseCard: { line1: "18 more spices", line2: "in the pantry", cta: "Browse all →" },
+    browseCard: { line1: "4 more spices", line2: "in the pantry", cta: "Browse all →" },
     viewAll: { label: "View all products", href: "/products" },
   },
 

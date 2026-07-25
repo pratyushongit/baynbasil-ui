@@ -49,7 +49,7 @@ export default function ProductsPage() {
 
       <div style={{ overflowX: "clip", minHeight: "100vh" }}>
         {/* Listing header */}
-        <header style={{ padding: "clamp(120px,17vw,150px) clamp(20px,5vw,64px) 40px" }}>
+        <header style={{ padding: "clamp(120px,17vw,150px) clamp(16px,4vw,40px) 32px" }}>
           <div
             style={{
               fontSize: 12,
@@ -116,8 +116,8 @@ export default function ProductsPage() {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fill,minmax(min(100%,270px),1fr))",
-            gap: 24,
-            padding: "10px clamp(20px,5vw,64px) 90px",
+            gap: 20,
+            padding: "4px clamp(16px,4vw,40px) 56px",
           }}
         >
           {shown.map((p) => (
@@ -125,9 +125,11 @@ export default function ProductsPage() {
               key={p.slug}
               className="hov-card"
               style={{
+                display: "flex",
+                flexDirection: "column",
                 background: "linear-gradient(170deg,var(--panel),var(--panel2))",
                 borderRadius: 20,
-                padding: "14px 14px 20px",
+                padding: "10px 10px 16px",
                 transition: "box-shadow .3s ease",
               }}
             >
@@ -135,7 +137,7 @@ export default function ProductsPage() {
                 onClick={() => open(p)}
                 style={{
                   position: "relative",
-                  height: 210,
+                  aspectRatio: "3 / 4",
                   borderRadius: 12,
                   overflow: "hidden",
                   background: "rgba(0,0,0,.28)",
@@ -166,6 +168,7 @@ export default function ProductsPage() {
                     fontWeight: 400,
                     fontSize: 22,
                     lineHeight: 1.1,
+                    minHeight: "2.2em",
                     cursor: "pointer",
                   }}
                 >
@@ -201,6 +204,7 @@ export default function ProductsPage() {
                   alignItems: "center",
                   justifyContent: "space-between",
                   gap: 10,
+                  marginTop: "auto",
                 }}
               >
                 <span style={{ fontFamily: GLOOCK, fontSize: 21, color: "var(--accent)" }}>
@@ -328,7 +332,8 @@ export default function ProductsPage() {
             <div style={{ padding: 26, display: "flex", flexDirection: "column", gap: 22 }}>
               <div
                 style={{
-                  height: 260,
+                  aspectRatio: "3 / 4",
+                  maxHeight: "min(60vh, 520px)",
                   borderRadius: 14,
                   overflow: "hidden",
                   background: "rgba(0,0,0,.28)",
@@ -338,6 +343,7 @@ export default function ProductsPage() {
                   src={sel.image ? `/images/products/${sel.image}` : undefined}
                   placeholder={`detail shot — ${sel.name}`}
                   sizes="(max-width: 768px) 94vw, 460px"
+                  priority
                 />
               </div>
 

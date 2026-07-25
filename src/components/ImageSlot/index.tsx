@@ -37,6 +37,7 @@ export default function ImageSlot({
   priority,
 }: ImageSlotProps) {
   const [failed, setFailed] = useState(false);
+  const [loaded, setLoaded] = useState(false);
   const showImage = Boolean(src) && !failed;
 
   return (
@@ -51,7 +52,12 @@ export default function ImageSlot({
           sizes={sizes}
           priority={priority}
           onError={() => setFailed(true)}
-          style={{ objectFit: "cover" }}
+          onLoad={() => setLoaded(true)}
+          style={{
+            objectFit: "cover",
+            opacity: loaded ? 1 : 0,
+            transition: "opacity .5s ease",
+          }}
         />
       ) : (
         <div
