@@ -10,6 +10,7 @@ import {
   useState,
 } from "react";
 import { site } from "@/content/site";
+import { useScrollLock } from "@/lib/useScrollLock";
 
 const STORAGE_KEY = "bnb-cart-v1";
 
@@ -200,13 +201,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
-  // Lock body scroll while the drawer is open.
-  useEffect(() => {
-    document.body.style.overflow = open ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [open]);
+  // Lock body scroll while the drawer is open (shared with the other overlays).
+  useScrollLock(open);
 
   const count = useMemo(() => items.reduce((a, i) => a + i.qty, 0), [items]);
   const subtotal = useMemo(() => items.reduce((a, i) => a + i.unit * i.qty, 0), [items]);

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRef } from "react";
 import ImageSlot from "@/components/ImageSlot";
 import { useCart } from "@/components/cart/CartProvider";
+import { useQuickView } from "@/components/product/QuickViewProvider";
 import { featuredProducts } from "@/content/products";
 import { sections } from "@/content/sections";
 import { formatPrice } from "@/lib/format";
@@ -13,6 +14,7 @@ const { productsCarousel } = sections;
 
 export default function ProductsCarousel() {
   const { add } = useCart();
+  const { open } = useQuickView();
   const trackRef = useRef<HTMLDivElement>(null);
 
   const scrollTrack = (dir: number) => {
@@ -122,12 +124,15 @@ export default function ProductsCarousel() {
             }}
           >
             <div
+              onClick={() => open(p)}
+              className="img-zoom"
               style={{
                 position: "relative",
                 aspectRatio: "4 / 5",
-                borderRadius: 14,
+                borderRadius: 8,
                 overflow: "hidden",
                 background: "rgba(0,0,0,.25)",
+                cursor: "pointer",
               }}
             >
               <ImageSlot
@@ -136,9 +141,10 @@ export default function ProductsCarousel() {
                 sizes="(max-width: 768px) 80vw, 300px"
               />
               <button
-                onClick={() =>
-                  add({ slug: p.slug, name: p.name, size: p.weight, unit: p.price })
-                }
+                onClick={(e) => {
+                  e.stopPropagation();
+                  add({ slug: p.slug, name: p.name, size: p.weight, unit: p.price });
+                }}
                 aria-label={`Add ${p.name} to cart`}
                 className="hov-fill"
                 style={{
@@ -172,16 +178,19 @@ export default function ProductsCarousel() {
                 }}
               >
                 <h3
+                  onClick={() => open(p)}
                   style={{
                     margin: 0,
                     fontFamily: GLOOCK,
                     fontWeight: 400,
                     fontSize: 20,
                     lineHeight: 1.15,
+                    cursor: "pointer",
                   }}
                 >
                   {p.name}
                 </h3>
+
                 <span
                   style={{
                     fontFamily: "var(--font-albert), sans-serif",

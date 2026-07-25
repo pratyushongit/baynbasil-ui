@@ -1,9 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { site } from "@/content/site";
 import { useCart } from "@/components/cart/CartProvider";
+import { useScrollLock } from "@/lib/useScrollLock";
 
 const GLOOCK = "var(--font-gloock), serif";
 
@@ -11,12 +12,7 @@ export default function Navbar() {
   const { count, openCart } = useCart();
   const [menu, setMenu] = useState(false);
 
-  useEffect(() => {
-    document.body.style.overflow = menu ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, [menu]);
+  useScrollLock(menu);
 
   const closeMenu = () => setMenu(false);
 

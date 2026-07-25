@@ -4,6 +4,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { CartProvider } from "@/components/cart/CartProvider";
 import CartDrawer from "@/components/cart/CartDrawer";
+import { QuickViewProvider } from "@/components/product/QuickViewProvider";
+import QuickViewDrawer from "@/components/product/QuickViewDrawer";
 import { site } from "@/content/site";
 
 const gloock = Gloock({
@@ -129,8 +131,11 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
         <CartProvider>
-          {children}
-          <CartDrawer />
+          <QuickViewProvider>
+            {children}
+            <QuickViewDrawer />
+            <CartDrawer />
+          </QuickViewProvider>
         </CartProvider>
       </body>
     </html>

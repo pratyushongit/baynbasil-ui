@@ -173,6 +173,11 @@ html.js-anim [data-reveal] {
   }
 }
 
+/* Product image: slight zoom on hover to signal it's interactive */
+.img-zoom:hover img {
+  transform: scale(1.06);
+}
+
 /* ── Products grid: 4-up on desktop, stepping down on narrower screens ── */
 .product-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));

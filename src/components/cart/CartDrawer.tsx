@@ -165,69 +165,83 @@ export default function CartDrawer() {
                   key={it.key}
                   style={{
                     display: "flex",
+                    flexWrap: "wrap",
                     alignItems: "center",
                     gap: 12,
+                    rowGap: 14,
                     background: "rgba(0,0,0,.22)",
                     borderRadius: 14,
                     padding: "14px 16px",
                   }}
                 >
-                  <div style={{ flex: 1, minWidth: 0 }}>
-                    <div style={{ fontFamily: GLOOCK, fontSize: 18 }}>{it.name}</div>
+                  <div style={{ flex: "1 1 150px", minWidth: 0 }}>
+                    <div style={{ fontFamily: GLOOCK, fontSize: 18, overflowWrap: "anywhere" }}>
+                      {it.name}
+                    </div>
                     <div style={{ fontSize: 12, color: "var(--mut)", marginTop: 3 }}>
                       {it.size} &middot; ₹{it.unit} each
                     </div>
                   </div>
-                  <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
-                    <button
-                      onClick={() => setQty(it.key, it.qty - 1)}
-                      aria-label="Decrease"
-                      className="hov-border"
-                      style={qtyBtn}
-                    >
-                      &#8722;
-                    </button>
-                    <span
-                      style={{ minWidth: 18, textAlign: "center", fontWeight: 600, fontSize: 14 }}
-                    >
-                      {it.qty}
-                    </span>
-                    <button
-                      onClick={() => setQty(it.key, it.qty + 1)}
-                      aria-label="Increase"
-                      className="hov-border"
-                      style={qtyBtn}
-                    >
-                      +
-                    </button>
-                  </div>
                   <div
                     style={{
-                      width: 60,
-                      textAlign: "right",
-                      fontFamily: "var(--font-albert), sans-serif",
-                      fontWeight: 700,
-                      fontSize: 15,
-                      color: "var(--accent)",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: 12,
+                      marginLeft: "auto",
+                      flexShrink: 0,
                     }}
                   >
-                    ₹{it.unit * it.qty}
+                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                      <button
+                        onClick={() => setQty(it.key, it.qty - 1)}
+                        aria-label="Decrease"
+                        className="hov-border"
+                        style={qtyBtn}
+                      >
+                        &#8722;
+                      </button>
+                      <span
+                        style={{ minWidth: 18, textAlign: "center", fontWeight: 600, fontSize: 14 }}
+                      >
+                        {it.qty}
+                      </span>
+                      <button
+                        onClick={() => setQty(it.key, it.qty + 1)}
+                        aria-label="Increase"
+                        className="hov-border"
+                        style={qtyBtn}
+                      >
+                        +
+                      </button>
+                    </div>
+                    <div
+                      style={{
+                        minWidth: 54,
+                        textAlign: "right",
+                        fontFamily: "var(--font-albert), sans-serif",
+                        fontWeight: 700,
+                        fontSize: 15,
+                        color: "var(--accent)",
+                      }}
+                    >
+                      ₹{it.unit * it.qty}
+                    </div>
+                    <button
+                      onClick={() => setQty(it.key, 0)}
+                      aria-label="Remove"
+                      className="hov-remove"
+                      style={{
+                        background: "none",
+                        border: "none",
+                        color: "rgba(246,237,221,.45)",
+                        fontSize: 13,
+                        cursor: "pointer",
+                        padding: 6,
+                      }}
+                    >
+                      &#10005;
+                    </button>
                   </div>
-                  <button
-                    onClick={() => setQty(it.key, 0)}
-                    aria-label="Remove"
-                    className="hov-remove"
-                    style={{
-                      background: "none",
-                      border: "none",
-                      color: "rgba(246,237,221,.45)",
-                      fontSize: 13,
-                      cursor: "pointer",
-                      padding: 6,
-                    }}
-                  >
-                    &#10005;
-                  </button>
                 </div>
               ))}
             </div>
