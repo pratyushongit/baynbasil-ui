@@ -115,121 +115,124 @@ export default function ProductsPage() {
         <main
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill,minmax(min(100%,270px),1fr))",
-            gap: 20,
-            padding: "4px clamp(16px,4vw,40px) 56px",
+            gridTemplateColumns: "repeat(auto-fill,minmax(min(100%,250px),1fr))",
+            gap: "48px 32px",
+            padding: "10px clamp(20px,5vw,64px) 90px",
           }}
         >
           {shown.map((p) => (
-            <div
-              key={p.slug}
-              className="hov-card"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                background: "linear-gradient(170deg,var(--panel),var(--panel2))",
-                borderRadius: 20,
-                padding: "10px 10px 16px",
-                transition: "box-shadow .3s ease",
-              }}
-            >
+            <div key={p.slug} style={{ display: "flex", flexDirection: "column" }}>
               <div
                 onClick={() => open(p)}
                 style={{
                   position: "relative",
-                  aspectRatio: "3 / 4",
-                  borderRadius: 12,
+                  aspectRatio: "4 / 5",
+                  borderRadius: 14,
                   overflow: "hidden",
-                  background: "rgba(0,0,0,.28)",
+                  background: "rgba(0,0,0,.25)",
                   cursor: "pointer",
                 }}
               >
                 <ImageSlot
                   src={p.image ? `/images/products/${p.image}` : undefined}
                   placeholder={`pouch — ${p.name}`}
-                  sizes="(max-width: 768px) 100vw, 270px"
+                  sizes="(max-width: 768px) 100vw, 250px"
                 />
-              </div>
-
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "baseline",
-                  justifyContent: "space-between",
-                  gap: 10,
-                  marginTop: 16,
-                }}
-              >
-                <h3
-                  onClick={() => open(p)}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    add({ slug: p.slug, name: p.name, size: p.weight, unit: p.price });
+                  }}
+                  aria-label={`Add ${p.name} to cart`}
+                  className="hov-fill"
                   style={{
-                    margin: 0,
-                    fontFamily: GLOOCK,
-                    fontWeight: 400,
-                    fontSize: 19,
-                    lineHeight: 1.15,
+                    position: "absolute",
+                    right: 12,
+                    bottom: 12,
+                    width: 42,
+                    height: 42,
+                    borderRadius: "50%",
+                    background: "rgba(30,13,5,.82)",
+                    backdropFilter: "blur(8px)",
+                    border: "1px solid rgba(246,237,221,.25)",
+                    color: "var(--cream)",
+                    fontSize: 20,
+                    lineHeight: 1,
                     cursor: "pointer",
+                    transition: "all .25s",
                   }}
                 >
-                  {p.name}
-                </h3>
-                <span
-                  style={{
-                    fontSize: 11.5,
-                    fontWeight: 600,
-                    letterSpacing: ".1em",
-                    color: "rgba(246,237,221,.55)",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {p.weight}
-                </span>
+                  +
+                </button>
               </div>
 
-              <p
-                style={{
-                  margin: "6px 0 14px",
-                  fontSize: 13.5,
-                  lineHeight: 1.5,
-                  color: "rgba(246,237,221,.72)",
-                }}
-              >
-                {p.note}
-              </p>
-
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  gap: 10,
-                  marginTop: "auto",
-                }}
-              >
-                <span
+              <div style={{ marginTop: 16 }}>
+                <div
                   style={{
-                    fontFamily: "var(--font-albert), sans-serif",
-                    fontSize: 18,
-                    fontWeight: 700,
-                    letterSpacing: ".01em",
-                    color: "var(--accent)",
+                    display: "flex",
+                    alignItems: "baseline",
+                    justifyContent: "space-between",
+                    gap: 14,
                   }}
                 >
-                  {formatPrice(p.price)}
-                </span>
-                <div style={{ display: "flex", gap: 8 }}>
-                  <button onClick={() => open(p)} className="hov-details" style={detailsBtn}>
-                    Details
-                  </button>
-                  <button
-                    onClick={() =>
-                      add({ slug: p.slug, name: p.name, size: p.weight, unit: p.price })
-                    }
-                    className="hov-fill"
-                    style={addBtn}
+                  <h3
+                    onClick={() => open(p)}
+                    style={{
+                      margin: 0,
+                      fontFamily: GLOOCK,
+                      fontWeight: 400,
+                      fontSize: 19,
+                      lineHeight: 1.15,
+                      cursor: "pointer",
+                    }}
                   >
-                    Add
-                  </button>
+                    {p.name}
+                  </h3>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-albert), sans-serif",
+                      fontSize: 20,
+                      fontWeight: 700,
+                      fontVariantNumeric: "tabular-nums",
+                      color: "var(--accent)",
+                      whiteSpace: "nowrap",
+                      flex: "none",
+                    }}
+                  >
+                    {formatPrice(p.price)}
+                  </span>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "baseline",
+                    justifyContent: "space-between",
+                    gap: 12,
+                    marginTop: 6,
+                  }}
+                >
+                  <p
+                    style={{
+                      margin: 0,
+                      fontSize: 13.5,
+                      lineHeight: 1.5,
+                      color: "rgba(246,237,221,.6)",
+                    }}
+                  >
+                    {p.note}
+                  </p>
+                  <span
+                    style={{
+                      flex: "none",
+                      fontSize: 12,
+                      fontWeight: 600,
+                      letterSpacing: ".06em",
+                      color: "rgba(246,237,221,.5)",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    {p.weight}
+                  </span>
                 </div>
               </div>
             </div>
@@ -470,36 +473,6 @@ export default function ProductsPage() {
     </>
   );
 }
-
-const detailsBtn: React.CSSProperties = {
-  fontFamily: "var(--font-albert), sans-serif",
-  fontSize: 12,
-  fontWeight: 700,
-  letterSpacing: ".08em",
-  textTransform: "uppercase",
-  background: "transparent",
-  color: "var(--mut)",
-  border: "1px solid rgba(246,237,221,.25)",
-  borderRadius: 999,
-  padding: "11px 16px",
-  cursor: "pointer",
-  transition: "all .25s",
-};
-
-const addBtn: React.CSSProperties = {
-  fontFamily: "var(--font-albert), sans-serif",
-  fontSize: 12,
-  fontWeight: 700,
-  letterSpacing: ".08em",
-  textTransform: "uppercase",
-  background: "transparent",
-  color: "var(--cream)",
-  border: "1px solid rgba(246,237,221,.35)",
-  borderRadius: 999,
-  padding: "11px 16px",
-  cursor: "pointer",
-  transition: "all .25s",
-};
 
 const tag: React.CSSProperties = {
   fontSize: 11.5,
