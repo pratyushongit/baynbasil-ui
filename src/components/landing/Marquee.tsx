@@ -4,7 +4,9 @@ const GLOOCK = "var(--font-gloock), serif";
 
 export default function Marquee() {
   // Star-separated words, e.g. RED CHILLI ✦ TURMERIC ✦ …
-  const strip = site.marquee.join("  ✦  ") + "  ✦  ";
+  // Repeat the list so a single sequence is wider than any viewport — the
+  // two identical sequences + translateX(-50%) then loop with no visible gap.
+  const strip = (site.marquee.join("  ✦  ") + "  ✦  ").repeat(2);
 
   return (
     <div
@@ -21,7 +23,7 @@ export default function Marquee() {
         fontSize: 26,
       }}
     >
-      <div style={{ display: "inline-flex", gap: 0, animation: "bnb-mq 26s linear infinite" }}>
+      <div style={{ display: "inline-flex", gap: 0, animation: "bnb-mq 130s linear infinite" }}>
         <span>{strip}</span>
         <span>{strip}</span>
       </div>

@@ -67,12 +67,16 @@ export const site = {
 
   /** Words scrolling in the landing-page marquee strip. */
   marquee: [
-    "RED CHILLI",
-    "TURMERIC",
-    "GARAM MASALA",
-    "CORIANDER",
-    "CUMIN",
-    "KASHMIRI CHILLI",
+    "ANDHRA CHICKEN FRY",
+    "BENGALI CHICKEN KOSHA",
+    "BHATTI MASALA CHICKEN",
+    "BIHARI CHICKEN CURRY",
+    "BIHAR'S CHAMPARAN",
+    "MUTTON DEHATI",
+    "FISH BHUNA",
+    "ALOO CHATPATA",
+    "MUSHROOM FRY",
+    "BENGALI BIRYANI",
   ],
 
   footer: {
