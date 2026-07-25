@@ -16,7 +16,7 @@ export const sections = {
     /** Rotating stamp text around the hero pouch. */
     badge: "STONE-GROUND • SMALL BATCH • NO ADDITIVES •",
     imagePlaceholder: "hero pouch shot — black pack, front",
-    imageFile: "hero-pouch.jpg",
+    imageFile: "hero.png",
   },
 
   /** Landing story section. */
