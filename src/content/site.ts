@@ -9,8 +9,7 @@ export interface NavLink {
 }
 
 export const site = {
-  /** Brand name (uses a curly apostrophe to match the design). */
-  brand: "Bay’n Basil",
+  brand: "Bay'n Basil",
 
   /** Public site URL — used for SEO (canonical, sitemap, OG image URLs). */
   url: "https://www.baynbasil.com",
