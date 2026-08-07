@@ -59,6 +59,14 @@ export const metadata: Metadata = {
   creator: site.brand,
   publisher: site.brand,
   alternates: { canonical: "/" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/brand-logo.png", type: "image/png", sizes: "256x256" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/brand-logo.png",
+  },
   openGraph: {
     type: "website",
     siteName: site.brand,
