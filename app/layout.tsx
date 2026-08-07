@@ -62,10 +62,10 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.ico", sizes: "any" },
-      { url: "/brand-logo.png", type: "image/png", sizes: "256x256" },
+      { url: "/og-image.jpg", type: "image/jpeg", sizes: "667x667" },
     ],
     shortcut: "/favicon.ico",
-    apple: "/brand-logo.png",
+    apple: "/og-image.jpg",
   },
   openGraph: {
     type: "website",
@@ -74,7 +74,9 @@ export const metadata: Metadata = {
     description: site.description,
     url: site.url,
     locale: "en_IN",
-    images: [{ url: "/og-image.jpg", width: 667, height: 667, alt: site.brand }],
+    images: [
+      { url: "/og-image.jpg", width: 667, height: 667, alt: site.brand },
+    ],
   },
   twitter: {
     card: "summary_large_image",
